@@ -98,13 +98,16 @@ $category-list-font-size: $font-size-base * 0.875; // 14px
 h1 {
   font-family: $font-family;
   font-weight: $font-weight-bold;
-  font-size: $h1-font-size;
+  font-size: 72px;
+  line-height: 12px;
+  word-spacing: 16px;
 }
 
 h2 {
   font-family: $font-family;
   font-weight: $font-weight-bold;
   font-size: $h2-font-size;
+  line-height: 0;
 }
 
 h3 {
