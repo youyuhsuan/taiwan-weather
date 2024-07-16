@@ -13,33 +13,74 @@ body {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2) format("woff2");
-  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0, U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4, U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b, U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014, U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d, U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168, U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730, U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3, U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f, U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb, U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd, U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c, U+ff1a;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2)
+    format("woff2");
+  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0,
+    U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4,
+    U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b,
+    U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014,
+    U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d,
+    U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168,
+    U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730,
+    U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3,
+    U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f,
+    U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb,
+    U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd,
+    U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c,
+    U+ff1a;
 }
 @font-face {
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2) format("woff2");
-  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0, U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4, U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b, U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014, U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d, U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168, U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730, U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3, U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f, U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb, U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd, U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c, U+ff1a;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2)
+    format("woff2");
+  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0,
+    U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4,
+    U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b,
+    U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014,
+    U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d,
+    U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168,
+    U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730,
+    U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3,
+    U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f,
+    U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb,
+    U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd,
+    U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c,
+    U+ff1a;
 }
 @font-face {
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2) format("woff2");
-  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0, U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4, U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b, U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014, U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d, U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168, U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730, U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3, U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f, U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb, U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd, U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c, U+ff1a;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2)
+    format("woff2");
+  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0,
+    U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4,
+    U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b,
+    U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014,
+    U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d,
+    U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168,
+    U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730,
+    U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3,
+    U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f,
+    U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb,
+    U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd,
+    U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c,
+    U+ff1a;
 }
 * {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-optical-sizing: auto;
   font-display: swap;
 }
 
 h1 {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: 72px;
   line-height: 12px;
@@ -47,24 +88,28 @@ h1 {
 }
 
 h2 {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 0;
 }
 
 h3 {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.2rem;
   line-height: 1rem;
 }
 
 button {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 .font-btn {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.188rem;
 }
 .font-btn.bold {
@@ -75,18 +120,21 @@ button {
 }
 
 .font-content {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
 }
 
 .font-body {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 0.831rem;
 }
 
 .font-category-list {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 500;
   font-size: 0.875rem;
   font-weight: 500;
@@ -105,7 +153,8 @@ button {
 }
 
 body {
-  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   overflow-x: clip;
 }
 
@@ -252,7 +301,12 @@ main {
 }
 .hero-section {
   padding: 5rem;
-  background-image: linear-gradient(to left, rgba(109, 141, 168, 0.7), rgba(255, 255, 255, 0)), url("/static/src/image/01_clear.jpg"), linear-gradient(#aaddee, #66aabb);
+  background-image: linear-gradient(
+      to left,
+      rgba(109, 141, 168, 0.7),
+      rgba(255, 255, 255, 0)
+    ),
+    url("/static/src/image/01_clear.jpg"), linear-gradient(#aaddee, #66aabb);
   background-position: center center, center 0rem, center center;
   background-repeat: no-repeat;
 }
@@ -435,3 +489,133 @@ path:hover {
 }
 
 /*# sourceMappingURL=all.css.map */
+
+/* 以下為新增的圖表CSS */
+
+.card-section {
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  margin: 100px;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.at-container,
+.uv-container {
+  display: flex;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+}
+.at-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.at-info {
+  margin-left: 20px;
+}
+
+.at-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.at-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.progress-bar {
+  width: 360px;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.percentage {
+  margin-left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.icon i {
+  font-size: 28px;
+}
+
+.high {
+  background-image: linear-gradient(
+    to right,
+    #f78ca0 0%,
+    #f9748f 19%,
+    #fd868c 60%,
+    #fe9a8b 100%
+  );
+}
+
+.low {
+  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+}
+
+.uv-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.uv-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: #ff0844;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 40px;
+}
+
+.uv-value span {
+  display: block;
+}
+
+.uv-date,
+.uv-title {
+  font-size: 18px;
+  text-align: center;
+  margin: 4px;
+}
+
+.uv-date {
+  font-weight: bold;
+}
+
+/* ------------------------------------- */
