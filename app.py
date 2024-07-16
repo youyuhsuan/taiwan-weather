@@ -9,24 +9,28 @@ import os
 
 app = FastAPI()
 
-app.mount('/static', StaticFiles(directory='static', html=True))
+app.mount("/static", StaticFiles(directory="static", html=True))
 
 load_dotenv()
 CWB_API_KEY = os.getenv("CWB_API_KEY")
+
 
 @app.get("/")
 async def index():
     return FileResponse("./static/index.html", media_type="text/html")
 
+
 @app.get("/weather/week/{location}")
 async def get_weather_week(location: str):
-    result = getWeatherWeek(CWB_API_KEY,location)
+    result = getWeatherWeek(CWB_API_KEY, location)
     return result
+
 
 @app.get("/weather/threeDays/{location}")
 async def get_weather_threeDays(location: str):
     result = getWeatherThreeDays(CWB_API_KEY, location)
     return result
+
 
 @app.get("/weather/temperature")
 async def get_temperature():
