@@ -7,17 +7,14 @@ import json
 load_dotenv()
 
 # 鄉鎮天氣預報 - 臺灣未來 3 天天氣預報
-def getWeatherTwoDays(api_code, api_key, location = None):
+def getWeatherThreeDays(CWB_API_KEY, location):
     try:
-        base_url = "https://opendata.cwa.gov.tw/api/v1/rest/datastore"
-        api_url = f"{base_url}/{api_code}"
+        api_url = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-089"
 
         params = {
-            "Authorization": api_key,
+            "Authorization": CWB_API_KEY,
+            "locationName": location
         }
-
-        if location:
-            params["locationName"] = location
 
         query_string = urllib.parse.urlencode(params)
         url = f"{api_url}?{query_string}"
@@ -42,8 +39,3 @@ def getWeatherTwoDays(api_code, api_key, location = None):
     except Exception as e:
         print(f"其他錯誤: {e}")
         return None
-
-# 使用範例
-api_code = "F-D0047-089"
-api_key = os.getenv("CWB_API_KEY")
-location = "臺北市"
