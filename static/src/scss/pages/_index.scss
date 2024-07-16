@@ -50,10 +50,36 @@ main {
 .hero-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 40rem;
+  min-width: 20rem;
 }
 
 .details {
+  width: 100%;
   display: grid;
-  grid-column-start: 2;
-  grid-column-end: 2;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column: 2;
+  gap: 10px;
+}
+
+.MaxAT,
+.WD,
+.MinAT,
+.PoP12h {
+  display: flex;
+  align-items: center;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-image: url("../../../static/src/icon/thunderstorm.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
