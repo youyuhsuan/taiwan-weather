@@ -174,11 +174,13 @@ main {
 
 .hero-section {
   position: relative;
+  display: flex;
   margin: 0 auto;
+  padding: 5rem;
   width: 100%;
   height: 23.375rem;
-  background-image: url("../image/welcome.png"), linear-gradient(#aaddee, #66aabb);
-  background-size: 120rem 33.375rem;
+  background-image: url("../image"), linear-gradient(#aaddee, #66aabb);
+  background-size: 120rem 51.063rem;
   background-repeat: no-repeat;
 }
 @media (max-width: 576px) {
@@ -211,6 +213,17 @@ main {
     height: 10.563rem;
     padding: 0.625rem;
   }
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
 
 /*# sourceMappingURL=all.css.map */
