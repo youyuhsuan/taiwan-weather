@@ -6,9 +6,7 @@ import os
 
 load_dotenv()
 
-def getTemperature():
-
-    CWB_API_KEY = os.getenv("CWB_API_KEY")
+def getTemperature(CWB_API_KEY):
 
     element = "T"
 
