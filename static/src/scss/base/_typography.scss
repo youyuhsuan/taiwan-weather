@@ -76,14 +76,14 @@ $font-weight-medium: 500;
 $font-weight-bold: 700;
 
 //  line-height
-$line-height-slogan-dialog: $line-height-base * 1.5; // 24px
-$line-height-headline: $line-height-base * 2.125; // 34px
+$line-height-slogan-dialog: $line-height-base * 1.2; // 24px
+$line-height-headline: $line-height-base * 1.125; // 34px
 $line-height-body: $line-height-base * 0.831; // 13px
 
 //  font-size
-$h1-font-size: $font-size-base * 1.75; // 28px
-$h2-font-size: $font-size-base * 1.875; // 30px
-$h3-font-size: $font-size-base * 1.5; // 24px
+$h1-font-size: $font-size-base * 2; // 28px
+$h2-font-size: $font-size-base * 1.75; // 30px
+$h3-font-size: $font-size-base * 1.2; // 24px
 $btn-font-size: $font-size-base * 1.188; // 19px
 $content-font-size: $font-size-base;
 $category-list-font-size: $font-size-base * 0.875; // 14px
