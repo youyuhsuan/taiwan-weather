@@ -36,12 +36,9 @@ async def get_weather_threeDays(location: str):
 async def get_temperature():
     result = getTemperature(CWB_API_KEY)
     return result
-<<<<<<< HEAD
-=======
+
 
 @app.get("/weather/humidity")
 async def get_humidity():
     result = getHumidity(CWB_API_KEY)
     return result
-
->>>>>>> 68388b0455381089821c69c179be397d837911d2
