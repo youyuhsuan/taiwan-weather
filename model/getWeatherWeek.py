@@ -1,10 +1,6 @@
 import urllib.request as req
 from urllib.parse import quote
 import json
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
 
 def getWeatherWeek(CWB_API_KEY,location):
 
@@ -33,5 +29,5 @@ def getWeatherWeek(CWB_API_KEY,location):
                 localData = {"data":value}
                 dataItem.append(localData)
             data.append({elementName:dataItem})
-            
+
     return data
