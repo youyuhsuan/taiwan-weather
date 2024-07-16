@@ -41,13 +41,16 @@ body {
 h1 {
   font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 72px;
+  line-height: 12px;
+  word-spacing: 16px;
 }
 
 h2 {
   font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: 1.75rem;
+  line-height: 0;
 }
 
 h3 {
@@ -112,28 +115,21 @@ main {
 }
 
 .thermostat {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: 0;
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
-  outline: inherit;
 }
-.thermostat svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-.thermostat:focus {
-  outline: 2px solid #007bff;
-  outline-offset: 2px;
-}
-.thermostat:hover {
-  opacity: 0.8;
-}
-
-use {
+.thermostat img {
   width: 100%;
   height: 100%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 .list-bar {
@@ -236,10 +232,6 @@ use {
   align-items: center;
 }
 
-* {
-  font-family: "Fjalla One";
-}
-
 main {
   width: 100%;
 }
@@ -249,48 +241,18 @@ main {
   }
 }
 
-svg {
-  height: 100%;
-}
-
-path {
-  stroke: #ffffff;
-  fill: transparent;
-  transition: 0.5s;
-  cursor: pointer;
-}
-path:hover {
-  fill: #9e9e9e;
-  transform: translate(-5px, -5px);
-}
-
-.locationName {
-  margin-right: auto;
-  display: flex;
-  color: #ffffff;
-  gap: 10px;
-}
-.locationName::after {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-image: url("/static/src/icon/near.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .hero {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
+  height: 817px;
+  gap: 4em;
   display: flex;
+  align-items: center;
   margin: 0 auto;
 }
 .hero-section {
   padding: 5rem;
   background-image: linear-gradient(to left, rgba(109, 141, 168, 0.7), rgba(255, 255, 255, 0)), url("/static/src/image/01_clear.jpg"), linear-gradient(#aaddee, #66aabb);
-  background-size: 100% 100%, 120rem 51.063rem, 100% 100%;
   background-position: center center, center 0rem, center center;
   background-repeat: no-repeat;
 }
@@ -304,19 +266,47 @@ path:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 40rem;
-  min-width: 20rem;
+  width: 60%;
   color: #ffffff;
 }
 
-.details {
+.hero-map {
+  position: relative;
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  height: 100%;
+}
+
+.locationName {
+  font-size: 25px;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  gap: 10px;
+}
+.locationName::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url("/static/src/icon/near.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.details {
+  font-size: 18px;
+  width: 100%;
+  padding: 0.4em 6em;
+  margin-bottom: 20px;
+  gap: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-column: 2;
-  gap: 10px;
-  padding: 0.2rem;
+  line-height: 24px;
 }
 
 .MaxAT,
@@ -335,10 +325,25 @@ path:hover {
   width: 20px;
   height: 20px;
   margin-right: 5px;
-  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.MaxAT::before {
+  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
+}
+
+.WD::before {
+  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
+}
+
+.MinAT::before {
+  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
+}
+
+.PoP12h::before {
+  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
 }
 
 .title_area {
@@ -350,12 +355,10 @@ path:hover {
 }
 
 .weather-forecast {
-  display: flex;
-  align-items: center;
-  padding: 20px;
+  position: relative;
+  margin-top: 32px;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
 }
 .weather-forecast .forecast-container {
   display: flex;
@@ -384,7 +387,7 @@ path:hover {
 }
 .weather-forecast .forecast-item .time {
   font-size: 14px;
-  color: #888;
+  color: #ffffff;
 }
 .weather-forecast .nav-button {
   background: none;
@@ -416,20 +419,17 @@ path:hover {
   content: "🌧️";
 }
 
-@media (max-width: 600px) {
-  .weather-forecast {
-    padding: 10px;
-  }
-  .weather-forecast .forecast-item {
-    padding: 0 10px;
-  }
-  .weather-forecast .forecast-item .weather-icon {
-    font-size: 20px;
-  }
-  .weather-forecast .forecast-item .temperature {
-    font-size: 16px;
-  }
-  .weather-forecast .forecast-item .time {
-    font-size: 12px;
-  }
+svg {
+  height: 100%;
+}
+
+path {
+  stroke: #ffffff;
+  fill: transparent;
+  transition: 0.5s;
+  cursor: pointer;
+}
+path:hover {
+  fill: #9e9e9e;
+  transform: translate(-5px, -5px);
 }/*# sourceMappingURL=all.css.map */

@@ -4,7 +4,6 @@ from fastapi.responses import FileResponse
 from model.getWeatherWeek import getWeatherWeek
 from model.getWeatherThreeDays import getWeatherThreeDays
 from model.getTemperature import getTemperature
-from model.getHumidity import getHumidity
 from dotenv import load_dotenv
 import os
 
@@ -38,8 +37,8 @@ async def get_temperature():
     result = getTemperature(CWB_API_KEY)
     return result
 
+
 @app.get("/weather/humidity")
 async def get_humidity():
     result = getHumidity(CWB_API_KEY)
     return result
-

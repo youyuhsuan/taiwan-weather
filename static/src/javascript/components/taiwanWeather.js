@@ -10,7 +10,8 @@ async function getTemperature() {
   }
 }
 
-// 將溫度映射到顏色的函數
+let isActive = false;
+
 function getColorForTemperature(temperature) {
   const temp = parseFloat(temperature);
   const colorScale = [
@@ -42,7 +43,6 @@ function getColorForTemperature(temperature) {
   return `rgb(${colorScale[colorScale.length - 1].color.join(", ")})`;
 }
 
-// SVG ID到縣市名稱的映射
 const svgIdToCountyName = {
   penghu_country: "澎湖縣",
   chiayi_country: "嘉義縣",
@@ -67,7 +67,6 @@ const svgIdToCountyName = {
   kinmen_country: "金門縣",
 };
 
-// 主函數
 async function initializeMap() {
   // 獲取溫度數據
   const temperatureArray = await getTemperature();
@@ -79,27 +78,25 @@ async function initializeMap() {
 
   console.log("Temperature data:", temperatureData);
 
-  // 獲取所有路徑元素
   const paths = document.querySelectorAll("path");
 
-  // 為每個路徑添加事件監聽器和設置顏色
   paths.forEach((path) => {
     const areaId = path.id;
     const countyName = svgIdToCountyName[areaId];
     const temperature = temperatureData[countyName];
 
     if (temperature) {
-      // 設置顏色
       path.style.fill = getColorForTemperature(temperature);
-
-      // 添加鼠標進入事件
-      path.addEventListener("mouseenter", (e) => {
-        document.getElementById("area-tag").textContent = countyName;
-        document.getElementById("temperature").textContent = `${temperature}°C`;
-      });
     }
   });
 }
 
-// 調用主函數
-initializeMap();
+const thermostatButton = document.querySelector(".thermostat");
+
+thermostatButton.addEventListener("click", () => {
+  isActive = !isActive;
+  thermostatButton.classList.toggle("active", isActive);
+  if (!isActive) {
+    initializeMap();
+  }
+});

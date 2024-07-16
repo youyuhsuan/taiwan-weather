@@ -1,12 +1,6 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-// 全局样式
-* {
-  font-family: "Fjalla One";
-}
-
-// 主要布局
 main {
   width: 100%;
   @include breakpoint(sm) {
@@ -14,49 +8,14 @@ main {
   }
 }
 
-// SVG 地图样式
-svg {
-  height: 100%;
-}
-
-path {
-  stroke: $white;
-  fill: transparent;
-  transition: 0.5s;
-  cursor: pointer;
-
-  &:hover {
-    fill: #9e9e9e;
-    transform: translate(-5px, -5px);
-  }
-}
-
-// 位置名称样式
-.locationName {
-  margin-right: auto;
-  display: flex;
-  color: $white;
-  gap: 10px;
-  &::after {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: {
-      image: url("/static/src/icon/near.svg");
-      size: contain;
-      repeat: no-repeat;
-      position: center;
-    }
-  }
-}
-
 .hero {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
+  height: 817px;
+  gap: 4em;
   display: flex;
+  align-items: center;
   margin: 0 auto;
-
   &-section {
     padding: 5rem;
     background: {
@@ -66,11 +25,9 @@ path {
           rgba(255, 255, 255, 0)
         ),
         url("/static/src/image/01_clear.jpg"), $gradient-secondary;
-      size: 100% 100%, 120rem 51.063rem, 100% 100%;
       position: center center, center 0rem, center center;
       repeat: no-repeat;
     }
-
     @include breakpoint(sm) {
       background-size: 100% 100%, 80.188rem 23.375rem, 100% 100%;
     }
@@ -81,21 +38,50 @@ path {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 40rem;
-    min-width: 20rem;
+    width: 60%;
     color: $white;
   }
 }
 
-// 详细信息样式
-.details {
+.hero-map {
+  position: relative;
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  height: 100%;
+}
+
+.locationName {
+  font-size: 25px;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  color: $white;
+  gap: 10px;
+  &::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: {
+      image: url("/static/src/icon/near.svg");
+      size: contain;
+      repeat: no-repeat;
+      position: center;
+    }
+  }
+}
+
+.details {
+  font-size: 18px;
+  width: 100%;
+  padding: 0.4em 6em;
+  margin-bottom: 20px;
+  gap: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-column: 2;
-  gap: 10px;
-  padding: 0.2rem;
+  line-height: 24px;
 }
 
 %detail-item {
@@ -108,10 +94,41 @@ path {
     height: 20px;
     margin-right: 5px;
     background: {
-      image: url("/static/src/icon/03_partly_cloudy_day.svg");
       size: contain;
       repeat: no-repeat;
       position: center;
+    }
+  }
+}
+
+.MaxAT {
+  &::before {
+    background: {
+      image: url("/static/src/icon/03_partly_cloudy_day.svg");
+    }
+  }
+}
+
+.WD {
+  &::before {
+    background: {
+      image: url("/static/src/icon/03_partly_cloudy_day.svg");
+    }
+  }
+}
+
+.MinAT {
+  &::before {
+    background: {
+      image: url("/static/src/icon/03_partly_cloudy_day.svg");
+    }
+  }
+}
+
+.PoP12h {
+  &::before {
+    background: {
+      image: url("/static/src/icon/03_partly_cloudy_day.svg");
     }
   }
 }
@@ -132,12 +149,10 @@ path {
 }
 
 .weather-forecast {
-  display: flex;
-  align-items: center;
-  padding: 20px;
+  position: relative;
+  margin-top: 32px;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
 
   .forecast-container {
     display: flex;
@@ -170,7 +185,7 @@ path {
 
     .time {
       font-size: 14px;
-      color: #888;
+      color: $white;
     }
   }
 
@@ -205,25 +220,18 @@ path {
   content: "🌧️";
 }
 
-// 响应式设计
-@media (max-width: 600px) {
-  .weather-forecast {
-    padding: 10px;
+svg {
+  height: 100%;
+}
 
-    .forecast-item {
-      padding: 0 10px;
+path {
+  stroke: $white;
+  fill: transparent;
+  transition: 0.5s;
+  cursor: pointer;
 
-      .weather-icon {
-        font-size: 20px;
-      }
-
-      .temperature {
-        font-size: 16px;
-      }
-
-      .time {
-        font-size: 12px;
-      }
-    }
+  &:hover {
+    fill: #9e9e9e;
+    transform: translate(-5px, -5px);
   }
 }
