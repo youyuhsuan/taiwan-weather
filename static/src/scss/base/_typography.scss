@@ -76,7 +76,7 @@ $font-weight-medium: 500;
 $font-weight-bold: 700;
 
 //  line-height
-$line-height-slogan-dialog: $line-height-base * 1.2; // 24px
+$line-height-slogan-dialog: $line-height-base; // 24px
 $line-height-headline: $line-height-base * 1.125; // 34px
 $line-height-body: $line-height-base * 0.831; // 13px
 
@@ -99,14 +99,12 @@ h1 {
   font-family: $font-family;
   font-weight: $font-weight-bold;
   font-size: $h1-font-size;
-  line-height: $line-height-slogan-dialog;
 }
 
 h2 {
   font-family: $font-family;
   font-weight: $font-weight-bold;
   font-size: $h2-font-size;
-  line-height: $line-height-headline;
 }
 
 h3 {

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap");
 * {
   box-sizing: border-box;
@@ -41,20 +42,18 @@ h1 {
   font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  line-height: 1.2rem;
 }
 
 h2 {
   font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   font-size: 1.75rem;
-  line-height: 1.125rem;
 }
 
 h3 {
   font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.2rem;
-  line-height: 1.2rem;
+  line-height: 1rem;
 }
 
 button {
@@ -108,7 +107,6 @@ body {
 }
 
 main {
-  max-width: 75rem;
   width: 100%;
   margin: 0 auto;
 }
@@ -213,6 +211,10 @@ main {
   align-items: center;
 }
 
+* {
+  font-family: "Fjalla One";
+}
+
 main {
   width: 100%;
 }
@@ -222,49 +224,56 @@ main {
   }
 }
 
-.hero-section {
-  position: relative;
+svg {
+  height: 100%;
+}
+
+path {
+  stroke: #ffffff;
+  fill: transparent;
+  transition: 0.5s;
+  cursor: pointer;
+}
+path:hover {
+  fill: #9e9e9e;
+  transform: translate(-5px, -5px);
+}
+
+.locationName {
+  margin-right: auto;
+  display: flex;
+  color: #ffffff;
+  gap: 10px;
+}
+.locationName::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/static/src/icon/near.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   margin: 0 auto;
+}
+.hero-section {
   padding: 5rem;
-  width: 100%;
-  height: 23.375rem;
-  background-image: url("../image"), linear-gradient(#aaddee, #66aabb);
-  background-size: 120rem 51.063rem;
+  background-image: linear-gradient(to left, rgba(109, 141, 168, 0.7), rgba(255, 255, 255, 0)), url("/static/src/image/01_clear.jpg"), linear-gradient(#aaddee, #66aabb);
+  background-size: 100% 100%, 120rem 51.063rem, 100% 100%;
+  background-position: center center, center 0rem, center center;
   background-repeat: no-repeat;
 }
 @media (max-width: 576px) {
   .hero-section {
-    background-size: 80.188rem 23.375rem;
+    background-size: 100% 100%, 80.188rem 23.375rem, 100% 100%;
   }
 }
-
-.hero-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -40%);
-  display: flex;
-  flex-direction: column;
-  max-width: 75rem;
-  width: 100%;
-  height: 10.563rem;
-  padding: 0.625rem;
-  gap: 0.625rem;
-}
-@media (max-width: 1200px) {
-  .hero-container {
-    padding: 0 2.5rem;
-  }
-}
-@media (max-width: 576px) {
-  .hero-container {
-    width: 21.25rem;
-    height: 10.563rem;
-    padding: 0.625rem;
-  }
-}
-
 .hero-info {
   display: flex;
   flex-direction: column;
@@ -272,6 +281,7 @@ main {
   text-align: center;
   max-width: 40rem;
   min-width: 20rem;
+  color: #ffffff;
 }
 
 .details {
@@ -281,6 +291,7 @@ main {
   grid-template-rows: 1fr 1fr;
   grid-column: 2;
   gap: 10px;
+  padding: 0.2rem;
 }
 
 .MaxAT,
@@ -303,6 +314,99 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.title_area {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.weather-forecast {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.weather-forecast .forecast-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.weather-forecast .forecast-container::-webkit-scrollbar {
+  display: none;
+}
+.weather-forecast .forecast-item {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+.weather-forecast .forecast-item .weather-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.weather-forecast .forecast-item .temperature {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.weather-forecast .forecast-item .time {
+  font-size: 14px;
+  color: #888;
+}
+.weather-forecast .nav-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 10px;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.weather-forecast .nav-button.prev {
+  left: 10px;
+}
+.weather-forecast .nav-button.next {
+  right: 10px;
+}
+
+.sun::before {
+  content: "☀️";
+}
+
+.cloud::before {
+  content: "☁️";
+}
+
+.rain::before {
+  content: "🌧️";
+}
+
+@media (max-width: 600px) {
+  .weather-forecast {
+    padding: 10px;
+  }
+  .weather-forecast .forecast-item {
+    padding: 0 10px;
+  }
+  .weather-forecast .forecast-item .weather-icon {
+    font-size: 20px;
+  }
+  .weather-forecast .forecast-item .temperature {
+    font-size: 16px;
+  }
+  .weather-forecast .forecast-item .time {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=all.css.map */
