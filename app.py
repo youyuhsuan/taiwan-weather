@@ -43,3 +43,9 @@ async def get_temperature():
 async def get_humidity():
     result = getHumidity(CWB_API_KEY)
     return result
+
+
+@app.get("/trigger/discord")
+async def trigger_discord():
+    result = triggerDiscord()
+    return result
