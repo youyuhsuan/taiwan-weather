@@ -6,9 +6,7 @@ import os
 
 load_dotenv()
 
-def getWeatherWeek(location):
-
-    CWB_API_KEY = os.getenv("CWB_API_KEY")
+def getWeatherWeek(CWB_API_KEY,location):
 
     url = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=" + CWB_API_KEY + "&locationName=" + quote(location)
 
