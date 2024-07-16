@@ -1,12 +1,7 @@
-from dotenv import load_dotenv
-import os
 import urllib.request
 import urllib.parse
 import json
 
-load_dotenv()
-
-# 鄉鎮天氣預報 - 臺灣未來 3 天天氣預報
 def getWeatherThreeDays(CWB_API_KEY, location):
     try:
         api_url = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-089"
