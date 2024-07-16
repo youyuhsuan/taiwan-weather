@@ -17,4 +17,21 @@ def getWeatherWeek(CWB_API_KEY,location):
 
     my_data = json.loads(response_body)
 
-    return my_data
+    data = []
+
+    for i in range(15):
+        dataItem=[]
+        elementName = my_data["records"]["locations"][0]["location"][0]["weatherElement"][i]["description"]
+        if i == 9:
+            for j in range(7):
+                value = my_data["records"]["locations"][0]["location"][0]["weatherElement"][i]["time"][j]
+                localData = {"data":value}
+                dataItem.append(localData)
+        else:
+            for j in range(14):
+                value = my_data["records"]["locations"][0]["location"][0]["weatherElement"][i]["time"][j]
+                localData = {"data":value}
+                dataItem.append(localData)
+            data.append({elementName:dataItem})
+            
+    return data
