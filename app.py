@@ -4,6 +4,7 @@ from fastapi.responses import FileResponse
 from model.getWeatherWeek import getWeatherWeek
 from model.getWeatherThreeDays import getWeatherThreeDays
 from model.getTemperature import getTemperature
+from model.getHumidity import getHumidity
 from dotenv import load_dotenv
 import os
 
