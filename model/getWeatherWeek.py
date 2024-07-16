@@ -1,2 +1,2 @@
-def getWeatherWeek():
+def getWeatherWeek(location):
     return
