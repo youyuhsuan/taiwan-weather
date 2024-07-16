@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from model.getWeatherWeek import getWeatherWeek
 from model.getWeatherThreeDays import getWeatherThreeDays
+from model.getTemperature import getTemperature
 from dotenv import load_dotenv
 import os
 
@@ -25,4 +26,9 @@ async def get_weather_week(location: str):
 @app.get("/weather/threeDays/{location}")
 async def get_weather_threeDays(location: str):
     result = getWeatherThreeDays(CWB_API_KEY, location)
+    return result
+
+@app.get("/weather/temperature")
+async def get_temperature():
+    result = getTemperature()
     return result
