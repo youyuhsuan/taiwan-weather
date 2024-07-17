@@ -1,6 +1,7 @@
 async function getHeroData(ctyName){
   let response = await fetch(`/weather/threeDays/${ctyName}`);
   let responseData = await response.json();
+  console.log(responseData)
   let todayWeather = responseData[0].weatherElement;
 
   let nowPoP12h = todayWeather[0].time[0].elementValue[0].value;
@@ -55,8 +56,5 @@ async function getHeroData(ctyName){
     forecastContainer.appendChild(forecastItems);
   });
 }
-
-getHeroData();
-
 
 
