@@ -46,43 +46,7 @@
             <div class="weather-forecast">
               <button class="nav-button prev">&#10094;</button>
               <div class="forecast-container">
-                <div class="forecast-items">
-                  <div class="forecast-item">
-                    <i class="weather-icon sun"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time1</div>
-                  </div>
-                  <div class="forecast-item">
-                    <i class="weather-icon cloud"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time2</div>
-                  </div>
-                  <div class="forecast-item">
-                    <i class="weather-icon cloud"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time3</div>
-                  </div>
-                  <div class="forecast-item">
-                    <i class="weather-icon sun"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time4</div>
-                  </div>
-                  <div class="forecast-item">
-                    <i class="weather-icon sun"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time5</div>
-                  </div>
-                  <div class="forecast-item">
-                    <i class="weather-icon rain"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time6</div>
-                  </div>
-                  <div class="forecast-item">
-                    <i class="weather-icon sun"></i>
-                    <div class="temperature">29°</div>
-                    <div class="time">Time7</div>
-                  </div>
-                </div>
+                <div class="forecast-items"></div>
               </div>
               <button class="nav-button next">&#10095;</button>
             </div>
@@ -93,6 +57,7 @@
               data-name="taiwan"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 595.28 841.89"
+              preserveAspectRatio="xMidYMid meet"
             >
               <path
                 id="161d6372-ac8f-409c-ad51-9db7795c8614"
@@ -632,9 +597,10 @@
       </section>
     </main>
     <script src="../static/src/javascript/utils/geo.js"></script>
-    <script src="../static/src/javascript/components/hero.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../static/src/javascript/utils/chart.js"></script>
-    <script src="../static/src/javascript/components/taiwanWeather.js"></script>
+    <script src="../static/src/javascript/components/hero.js"></script>
+    <script src="../static/src/javascript/components/getTemperature.js"></script>
+    <script src="../static/src/javascript/components/getHumidity.js"></script>
   </body>
 </html>
