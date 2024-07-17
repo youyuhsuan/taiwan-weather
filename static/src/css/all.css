@@ -127,6 +127,8 @@ main {
   position: absolute;
   right: 0;
   display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .thermostat,
@@ -255,13 +257,11 @@ main {
 }
 
 .hero {
-  width: 100%;
   max-width: 1620px;
   max-height: 80dvh;
-  min-height: 500px;
+  width: 100%;
   gap: 3em;
   display: flex;
-  align-items: center;
   margin: 0 auto;
 }
 @media (max-width: 1200px) {
@@ -298,6 +298,7 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 50%;
   color: #ffffff;
   fill: #ffffff;
 }
@@ -314,20 +315,17 @@ main {
 .hero-map {
   position: relative;
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
+  flex: 1 1 auto;
 }
 @media (max-width: 768px) {
   .hero-map {
     height: 50vh;
-    min-height: 300px;
   }
 }
 @media (max-width: 576px) {
   .hero-map {
     height: 40vh;
-    min-height: 250px;
   }
 }
 
@@ -530,8 +528,13 @@ main {
 }
 
 #taiwan {
+  max-height: 80vh;
+  max-width: 100%;
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #taiwan path {
   stroke: #ffffff;
@@ -553,17 +556,6 @@ main {
   margin: 0 auto;
   gap: 20px;
   margin: 40px auto;
-}
-
-.chart {
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-  border-radius: 30px;
-  padding: 40px;
-}
-.chart:first-child {
-  grid-column: 1/3;
-  grid-row: 1;
 }
 
 /*# sourceMappingURL=all.css.map */
