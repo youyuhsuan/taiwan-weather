@@ -76,6 +76,7 @@ let weekRain = [];
 let lowTempObj = [];
 let highTempObj = [];
 let days = [];
+let weeks = ["日", "一", "二", "三", "四", "五", "六"];
 
 async function getWeather() {
   try {
@@ -88,51 +89,61 @@ async function getWeather() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    let dataArray = data.records.locations[0].location[0].weatherElement;
-    console.log(dataArray);
-    const rainData = dataArray[0].time;
-    const lowTemp = dataArray[8].time;
-    const highTemp = dataArray[12].time;
+    const rainData = data[0]["12小時降雨機率"];
+    const lowTemp = data[8]["最低溫度"];
+    const highTemp = data[11]["最高溫度"];
 
+    console.log(data);
+
+    // 雨量(三天早晚)
     for (let i = 0; i < 6; i++) {
-      let rainTime = new Date(rainData[i].startTime).getHours();
-      let rainMonth = new Date(rainData[i].startTime).getMonth() + 1;
-      let rainDate = new Date(rainData[i].startTime).getDate();
+      let startTime = rainData[i].data.startTime;
+      let rainTime = new Date(startTime).getHours();
+      let rainMonth = new Date(startTime).getMonth() + 1;
+      let rainDate = new Date(startTime).getDate();
       let rainFullDay = rainMonth + "/" + rainDate;
-      let rainPercentage = rainData[i].elementValue[0].value;
-      let dailySwitch = rainTime === 18 ? "晚" : "早";
+      let rainPercentage = rainData[i].data.elementValue[0].value;
+      let timeSwitch = rainTime === 18 ? "晚" : "早";
 
+      console.log(rainTime, rainMonth, rainFullDay, rainPercentage);
       weekRain.push({
-        date: rainFullDay + "(" + dailySwitch + ")",
+        date: rainFullDay + "(" + timeSwitch + ")",
         rain: rainPercentage,
       });
     }
 
+    // 一週溫度(最低溫)
     lowTemp.forEach((lowTempData) => {
-      let lowTempValue = lowTempData.elementValue[0].value;
-      let weekTime = new Date(lowTempData.startTime).getHours();
-      let weekDay = new Date(lowTempData.startTime).getDay();
-      let weeks = ["日", "一", "二", "三", "四", "五", "六"];
+      let lowTempValue = lowTempData.data.elementValue[0].value;
+      let startTime = lowTempData.data.startTime;
+      let weekTime = new Date(startTime).getHours();
+      let weekDay = new Date(startTime).getDay();
       let day = weeks[weekDay];
       let dailySwitch = weekTime === 18 ? "晚" : "早";
       lowTempObj.push({
         day: day + "(" + dailySwitch + ")",
         lowTemp: lowTempValue,
       });
+      // console.log(lowTempObj);
     });
 
+    // 一週溫度(最高溫)
     highTemp.forEach((highTempData) => {
-      let highTempValue = highTempData.elementValue[0].value;
-      highTempObj.push({ highTemp: highTempValue });
+      let highTempValue = highTempData.data.elementValue[0].value;
+      let startTime = highTempData.data.startTime;
+      let weekTime = new Date(startTime).getHours();
+      let weekDay = new Date(startTime).getDay();
+      let day = weeks[weekDay];
+      let dailySwitch = weekTime === 18 ? "晚" : "早";
+      highTempObj.push({
+        day: day + "(" + dailySwitch + ")",
+        highTemp: highTempValue,
+      });
+      // console.log(highTempObj);
     });
 
     getRainWeatherCard(weekRain);
     getTempLines(lowTempObj, highTempObj);
-
-    console.log("最低溫", lowTempObj);
-    console.log("最高溫", highTempObj);
-
-    console.log(weekRain);
   } catch (error) {
     console.error(error);
   }
