@@ -2,23 +2,26 @@ async function getTemperature() {
   try {
     let response = await fetch("/weather/temperature");
     let responseData = await response.json();
-    console.log(responseData.length);
+    console.log(responseData);
     return responseData;
   } catch (error) {
     console.error("Error fetching temperature data:", error);
-    return [];
   }
 }
-
-let isActive = false;
 
 function getColorForTemperature(temperature) {
   const temp = parseFloat(temperature);
   const colorScale = [
-    { temp: 30, color: [0, 255, 255] },
-    { temp: 33, color: [0, 255, 0] },
-    { temp: 36, color: [255, 255, 0] },
-    { temp: 39, color: [255, 0, 0] },
+    { temp: -1, color: [0, 36, 89] },
+    { temp: 5, color: [0, 100, 148] },
+    { temp: 11, color: [0, 216, 255] },
+    { temp: 15, color: [0, 161, 61] },
+    { temp: 19, color: [80, 205, 106] },
+    { temp: 23, color: [175, 240, 105] },
+    { temp: 27, color: [255, 255, 0] },
+    { temp: 31, color: [255, 170, 0] },
+    { temp: 35, color: [255, 0, 0] },
+    { temp: 38, color: [128, 0, 128] },
   ];
 
   for (let i = 1; i < colorScale.length; i++) {
@@ -67,26 +70,28 @@ const svgIdToCountyName = {
   kinmen_country: "金門縣",
 };
 
+let isActive = false;
+
 async function initializeMap() {
-  // 獲取溫度數據
   const temperatureArray = await getTemperature();
-  const temperatureData = temperatureArray.reduce((acc, curr) => {
+  let temperatureData = temperatureArray.reduce((acc, curr) => {
     const [county, temp] = Object.entries(curr)[0];
     acc[county] = temp;
     return acc;
   }, {});
 
-  console.log("Temperature data:", temperatureData);
-
-  const paths = document.querySelectorAll("path");
+  const taiwan = document.getElementById("taiwan");
+  const paths = taiwan.querySelectorAll("path");
 
   paths.forEach((path) => {
     const areaId = path.id;
     const countyName = svgIdToCountyName[areaId];
     const temperature = temperatureData[countyName];
 
-    if (temperature) {
+    if (temperature && isActive) {
       path.style.fill = getColorForTemperature(temperature);
+    } else {
+      path.style.removeProperty("fill");
     }
   });
 }
@@ -96,7 +101,5 @@ const thermostatButton = document.querySelector(".thermostat");
 thermostatButton.addEventListener("click", () => {
   isActive = !isActive;
   thermostatButton.classList.toggle("active", isActive);
-  if (!isActive) {
-    initializeMap();
-  }
+  initializeMap();
 });

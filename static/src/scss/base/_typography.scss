@@ -93,62 +93,95 @@ $category-list-font-size: $font-size-base * 0.875; // 14px
   font-optical-sizing: auto;
   font-display: swap;
 }
+// Base values
+$font-size-base: 1rem; // 保持不變，通常等於 16px
+$line-height-base: 1.5; // 調整為更常見的值
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.8;
+
+// Font sizes
+$h1-font-size: $font-size-base * 6; // 96px
+$h2-font-size: $font-size-base * 3; // 48px
+$h3-font-size: $font-size-base * 2; // 32px
+$h4-font-size: $font-size-base * 1.5; // 24px
+$h5-font-size: $font-size-base * 1.25; // 20px
+$h6-font-size: $font-size-base * 1.1; // 17.6px
+
+$btn-font-size: $font-size-base * 1.125; // 18px
+$content-font-size: $font-size-base; // 16px
+$small-font-size: $font-size-base * 0.875; // 14px
+
+* {
+  font-family: $font-family;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
 
 // Element Styles
 h1 {
-  font-family: $font-family;
   font-weight: $font-weight-bold;
-  font-size: 72px;
-  line-height: 12px;
-  word-spacing: 16px;
+  font-size: $h1-font-size;
+  line-height: 0;
 }
 
 h2 {
-  font-family: $font-family;
   font-weight: $font-weight-bold;
   font-size: $h2-font-size;
   line-height: 0;
 }
 
 h3 {
-  font-family: $font-family;
+  font-weight: $font-weight-bold;
   font-size: $h3-font-size;
-  line-height: $line-height-slogan-dialog;
+  line-height: $line-height-normal;
 }
 
-button {
-  font-family: $font-family;
+h4 {
+  font-weight: $font-weight-medium;
+  font-size: $h4-font-size;
+  line-height: $line-height-normal;
+}
+
+h5 {
+  font-weight: $font-weight-medium;
+  font-size: $h5-font-size;
+  line-height: $line-height-normal;
+}
+
+h6 {
+  font-weight: $font-weight-medium;
+  font-size: $h6-font-size;
+  line-height: $line-height-normal;
 }
 
 // Composite Styles
 .font-btn {
-  font-family: $font-family;
   font-size: $btn-font-size;
+  line-height: $line-height-normal;
   &.bold {
     font-weight: $font-weight-bold;
   }
-
   &.regular {
     font-weight: $font-weight-regular;
   }
 }
 
 .font-content {
-  font-family: $font-family;
-  font-size: $font-size-base;
+  font-size: $content-font-size;
+  line-height: $line-height-relaxed;
 }
 
-.font-body {
-  font-family: $font-family;
-  font-size: $font-size-base;
-  line-height: $line-height-body;
-}
-
-.font-category-list {
-  font-family: $font-family;
-  font-weight: $font-weight-medium;
-  font-size: $category-list-font-size;
-  font-weight: $font-weight-medium;
+.font-small {
+  font-size: $small-font-size;
+  line-height: $line-height-normal;
 }
 
 // Utility Classes

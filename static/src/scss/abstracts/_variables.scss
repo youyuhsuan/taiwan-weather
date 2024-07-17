@@ -2,9 +2,11 @@
 
 // Color Scheme
 // Primary
-$primary-70: #448899;
-$primary-50: #66aabb;
-$primary-20: #aaddee;
+$primary-60: #6ca2e4;
+$primary-50: #97c4ff;
+$primary-20: #c2dcff;
+
+$primary-opacity-25: rgba(66, 151, 255, 0.25);
 
 // Secondary
 $secondary-70: #666666;
@@ -14,15 +16,15 @@ $secondary-10: #f8f8f8;
 
 // Additional
 $black: #000000;
-$black-opacity-25: rgba(0, 0, 0, 0.25);
+$white-opacity-25: rgba(255, 255, 255, 0.25);
 $black-opacity-60: rgba(0, 0, 0, 0.6);
 $white: #ffffff;
-$blue-gray: #aabbcc;
-$blue-gray-shadow: 0 0 1.875rem #aabbcc;
 
-// Gradients
-$gradient-primary: linear-gradient(#337788, #66aabb);
-$gradient-secondary: linear-gradient(#aaddee, #66aabb);
+$gradient: linear-gradient(
+  to left,
+  rgba(255, 255, 255, 0),
+  $primary-opacity-25
+);
 
 //  Padding
 $padding: 0.625rem; //  10px
