@@ -558,4 +558,10 @@ main {
   margin: 40px auto;
 }
 
+.temperature {
+  position: absolute;
+  width: 20px;
+  height: 40px;
+}
+
 /*# sourceMappingURL=all.css.map */

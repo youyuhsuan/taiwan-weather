@@ -1,51 +1,3 @@
-async function getTemperature() {
-  try {
-    let response = await fetch("/weather/temperature");
-    let responseData = await response.json();
-    console.log(responseData);
-    return responseData;
-  } catch (error) {
-    console.error("Error fetching temperature data:", error);
-  }
-}
-
-function getColorForTemperature(temperature) {
-  const temp = parseFloat(temperature);
-  const colorScale = [
-    { temp: -1, color: [0, 36, 89] },
-    { temp: 5, color: [0, 100, 148] },
-    { temp: 11, color: [0, 216, 255] },
-    { temp: 15, color: [0, 161, 61] },
-    { temp: 19, color: [80, 205, 106] },
-    { temp: 23, color: [175, 240, 105] },
-    { temp: 27, color: [255, 255, 0] },
-    { temp: 31, color: [255, 170, 0] },
-    { temp: 35, color: [255, 0, 0] },
-    { temp: 38, color: [128, 0, 128] },
-  ];
-
-  for (let i = 1; i < colorScale.length; i++) {
-    if (temp <= colorScale[i].temp) {
-      const lowColor = colorScale[i - 1];
-      const highColor = colorScale[i];
-      const ratio = (temp - lowColor.temp) / (highColor.temp - lowColor.temp);
-
-      const r = Math.round(
-        lowColor.color[0] + ratio * (highColor.color[0] - lowColor.color[0])
-      );
-      const g = Math.round(
-        lowColor.color[1] + ratio * (highColor.color[1] - lowColor.color[1])
-      );
-      const b = Math.round(
-        lowColor.color[2] + ratio * (highColor.color[2] - lowColor.color[2])
-      );
-
-      return `rgb(${r}, ${g}, ${b})`;
-    }
-  }
-  return `rgb(${colorScale[colorScale.length - 1].color.join(", ")})`;
-}
-
 const svgIdToCountyName = {
   penghu_country: "澎湖縣",
   chiayi_country: "嘉義縣",
@@ -73,11 +25,78 @@ const svgIdToCountyName = {
 
 let isActive = false;
 
-async function initializeMap() {
-  const temperatureArray = await getTemperature();
-  let temperatureData = temperatureArray.reduce((acc, curr) => {
-    const [county, temp] = Object.entries(curr)[0];
-    acc[county] = temp;
+async function getWeatherData(type) {
+  try {
+    let response = await fetch(`/weather/${type}`);
+    let responseData = await response.json();
+    console.log(responseData);
+    return responseData;
+  } catch (error) {
+    console.error(`Error fetching ${type} data:`, error);
+  }
+}
+
+function getColorForWeather(value, type) {
+  const colorScale =
+    type === "temperature"
+      ? [
+          { value: -1, color: [0, 36, 89] },
+          { value: 5, color: [0, 100, 148] },
+          { value: 11, color: [0, 216, 255] },
+          { value: 15, color: [0, 161, 61] },
+          { value: 19, color: [80, 205, 106] },
+          { value: 23, color: [175, 240, 105] },
+          { value: 27, color: [255, 255, 0] },
+          { value: 31, color: [255, 170, 0] },
+          { value: 35, color: [255, 0, 0] },
+          { value: 38, color: [128, 0, 128] },
+        ]
+      : [
+          { value: 30, color: [249, 214, 85] },
+          { value: 40, color: [196, 214, 131] },
+          { value: 50, color: [143, 187, 86] },
+          { value: 60, color: [91, 160, 41] },
+          { value: 70, color: [40, 133, 0] },
+          { value: 80, color: [30, 138, 158] },
+          { value: 100, color: [21, 112, 180] },
+        ];
+
+  const numericValue = parseFloat(value);
+
+  if (numericValue <= colorScale[0].value) {
+    return `rgb(${colorScale[0].color.join(", ")})`;
+  }
+  if (numericValue >= colorScale[colorScale.length - 1].value) {
+    return `rgb(${colorScale[colorScale.length - 1].color.join(", ")})`;
+  }
+
+  for (let i = 1; i < colorScale.length; i++) {
+    if (numericValue <= colorScale[i].value) {
+      const lowColor = colorScale[i - 1];
+      const highColor = colorScale[i];
+      const ratio =
+        (numericValue - lowColor.value) / (highColor.value - lowColor.value);
+
+      const r = Math.round(
+        lowColor.color[0] + ratio * (highColor.color[0] - lowColor.color[0])
+      );
+      const g = Math.round(
+        lowColor.color[1] + ratio * (highColor.color[1] - lowColor.color[1])
+      );
+      const b = Math.round(
+        lowColor.color[2] + ratio * (highColor.color[2] - lowColor.color[2])
+      );
+
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+  }
+}
+
+async function initializeMap(type) {
+  const dataArray = await getWeatherData(type);
+  weatherData = dataArray.reduce((acc, curr) => {
+    const [county, value] = Object.entries(curr)[0];
+    acc[county] = value;
     return acc;
   }, {});
 
@@ -87,20 +106,27 @@ async function initializeMap() {
   paths.forEach((path) => {
     const areaId = path.getAttribute("data-name");
     const countyName = svgIdToCountyName[areaId];
-    const temperature = temperatureData[countyName];
+    const value = weatherData[countyName];
 
-    if (temperature && isActive) {
-      path.style.fill = getColorForTemperature(temperature);
+    if (value && isActive) {
+      path.style.fill = getColorForWeather(value, type);
     } else {
       path.style.removeProperty("fill");
     }
   });
 }
 
-const thermostatButton = document.querySelector(".thermostat");
+function setupButton(buttonClass, type) {
+  const button = document.querySelector(`.${buttonClass}`);
+  button.addEventListener("click", () => {
+    isActive = !isActive;
+    button.classList.toggle("active", isActive);
+    document
+      .querySelector(`.${type === "type" ? "humidity" : "thermostat"}`)
+      .classList.remove("active");
+    initializeMap(type);
+  });
+}
 
-thermostatButton.addEventListener("click", () => {
-  isActive = !isActive;
-  thermostatButton.classList.toggle("active", isActive);
-  initializeMap();
-});
+setupButton("thermostat", "temperature");
+setupButton("humidity", "humidity");
