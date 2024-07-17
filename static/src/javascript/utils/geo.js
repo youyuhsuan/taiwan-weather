@@ -1,6 +1,6 @@
-function geoFindMe(){
+function geoFindMe(callback){
   const locationName = document.querySelector(".locationName");
-  const ctyName = "新竹市"
+  let ctyName = "新竹市"
 
   // 定位成功
   function success(position){
@@ -14,27 +14,36 @@ function geoFindMe(){
       if(data){
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
-        const ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
+        ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
         locationName.textContent = ctyName;
+        callback(ctyName); 
       }
       else{
-        locationName.textContent = "新竹市";
+        locationName.textContent = ctyName;
+        callback(ctyName); 
       }
-    }) 
+    }).catch(function(){
+      locationName.textContent = ctyName;
+      callback(ctyName); 
+    }); 
   }
 
   // 定位失敗
   function error(){
-    locationName.textContent = "新竹市";
+    locationName.textContent = ctyName;
+    callback(ctyName); 
   }
 
   // 確認是否可以啟用定位服務
   if(!navigator.geolocation){
-    locationName.textContent = "新竹市";
+    locationName.textContent = ctyName;
+    callback(ctyName); 
   }else{
-    locationName.textContent = "新竹市";
+    locationName.textContent = ctyName;
     navigator.geolocation.getCurrentPosition(success, error);
   }
 }
   
-geoFindMe();
+geoFindMe(function(ctyName){
+  getHeroData(ctyName);
+});
