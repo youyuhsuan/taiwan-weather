@@ -1,86 +1,12 @@
-// 濕度
-const wetData = {
-  labels: ["濕度"],
-  datasets: [
-    {
-      label: "濕度",
-      data: [68, 32],
-      backgroundColor: ["rgb(255, 99, 132)", "rgba(0, 0, 0, 0)"],
-      hoverOffset: 4,
-    },
-  ],
-};
-
-const wetConfig = {
-  type: "doughnut",
-  data: wetData,
-  options: {
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: function (tooltipItem) {
-            if (tooltipItem.raw !== 0) {
-              return tooltipItem.label + ": " + tooltipItem.raw + "%";
-            }
-            return null;
-          },
-        },
-      },
-    },
-  },
-};
-// const wetChart = document.getElementById("wet-chart").getContext("2d");
-// new Chart(wetChart, wetConfig);
-
-// 體感溫度
-const bodyData = {
-  labels: ["體感溫度"],
-  datasets: [
-    {
-      label: "溫度",
-      data: [38, 62],
-      backgroundColor: ["rgb(37, 150, 190)", "rgba(0, 0, 0, 0)"],
-      hoverOffset: 4,
-    },
-  ],
-};
-
-const bodyConfig = {
-  type: "doughnut",
-  data: bodyData,
-};
-
-// const bodyChart = document.getElementById("body-chart").getContext("2d");
-// new Chart(bodyChart, bodyConfig);
-
-// 一週溫度曲線
-// const weekLabels = ["D1", "D2", "D3", "D4", "D5", "D6", "D7"];
-// const weekData = {
-//   labels: weekLabels,
-//   datasets: [
-//     {
-//       label: "一週溫度曲線",
-//       data: [30, 29, 32, 33, 36, 28, 26],
-//       fill: false,
-//       tension: 0.1,
-//     },
-//   ],
-// };
-
-// const weekConfig = {
-//   type: "line",
-//   data: weekData,
-// };
-
 let weekRain = [];
 let lowTempObj = [];
 let highTempObj = [];
 let days = [];
 let weeks = ["日", "一", "二", "三", "四", "五", "六"];
 
-async function getWeather() {
+async function getWeather(location) {
   try {
-    const location = "臺北市";
+    console.log(location);
     const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
@@ -95,7 +21,7 @@ async function getWeather() {
     const dayDescript =
       data[9]["天氣預報綜合描述"][0].data.elementValue[0].value;
 
-    console.log(data);
+    // console.log(data);
 
     // 雨量(三天早晚)
     for (let i = 0; i < 6; i++) {
@@ -151,8 +77,6 @@ async function getWeather() {
   }
 }
 
-getWeather();
-
 //  雨量圖表
 const rainChart = document.getElementById("rain-chart");
 
@@ -196,7 +120,7 @@ function getRainWeatherCard(data) {
     scales: {
       y: {
         beginAtZero: true,
-        suggestedMax: Math.max(...data.map((item) => item.rain)) + 10,
+        suggestedMax: Math.max(data.map((item) => item.rain)) + 10,
       },
     },
   };
@@ -209,58 +133,55 @@ function getRainWeatherCard(data) {
 }
 
 // 一週溫度曲線
-const weekTempChart = document
-  .getElementById("week-temp-chart")
-  .getContext("2d");
+const weekTempChart = document.getElementById("week-temp-chart");
 function getTempLines(lowTempObj, highTempObj) {
   const values = lowTempObj.map((item) => item.day);
-  try {
-    new Chart(weekTempChart, {
-      type: "line",
-      data: {
-        labels: values,
-        datasets: [
-          {
-            label: "最低溫度",
-            data: lowTempObj.map((item) => item.lowTemp),
-            borderColor: "rgba(72, 198, 239, 0.8)",
-            fill: false,
-          },
-          {
-            label: "最高溫度",
-            data: highTempObj.map((item) => item.highTemp),
-            borderColor: "rgba(249, 116, 143, 0.6)",
-            fill: false,
-          },
-        ],
+  const weekData = {
+    labels: values,
+    datasets: [
+      {
+        label: "最低溫度",
+        data: lowTempObj.map((item) => item.lowTemp),
+        borderColor: "rgba(72, 198, 239, 0.8)",
+        fill: false,
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: { display: false },
-        plugins: {
-          title: {
-            display: true,
-            text: "早晚預估氣溫",
-            color: "#000000",
-            font: {
-              size: 24,
-              family: "Noto Sans TC",
-            },
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                return "溫度：" + context.parsed.y + "°C";
-              },
-            },
+      {
+        label: "最高溫度",
+        data: highTempObj.map((item) => item.highTemp),
+        borderColor: "rgba(249, 116, 143, 0.6)",
+        fill: false,
+      },
+    ],
+  };
+  const weekOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: "早晚預估氣溫",
+        color: "#000000",
+        font: {
+          size: 24,
+          family: "Noto Sans TC",
+        },
+      },
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            return "溫度：" + context.parsed.y + "°C";
           },
         },
       },
-    });
-  } catch (error) {
-    console.error(error);
-  }
+    },
+  };
+
+  new Chart(weekTempChart, {
+    type: "line",
+    data: weekData,
+    options: weekOptions,
+  });
 }
 
 function createBodyProgress(lowBodyTemp, highBodyTemp) {
@@ -279,3 +200,7 @@ function createDescription(dayDescript) {
   let description = document.getElementById("dayDes");
   description.textContent = dayDescript;
 }
+
+// 搜尋渲染
+const searchWord = "臺北市";
+getWeather(searchWord);
