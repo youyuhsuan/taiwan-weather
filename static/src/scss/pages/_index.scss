@@ -62,8 +62,6 @@ main {
 
   &-map {
     position: relative;
-    display: flex;
-    justify-content: center;
     flex: 1 1 auto;
     @include breakpoint(md) {
       height: 50vh;
