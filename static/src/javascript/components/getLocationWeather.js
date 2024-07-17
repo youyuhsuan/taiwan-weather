@@ -2,7 +2,6 @@ async function getWeatherData(location) {
   try {
     let response = await fetch(`/weather/threeDays/${location}`);
     let responseData = await response.json();
-    console.log(responseData);
     return responseData;
   } catch (error) {
     console.error(`Error fetching weather data for ${location}:`, error);
@@ -12,14 +11,17 @@ async function getWeatherData(location) {
 function selectLocation() {
   const taiwan = document.getElementById("taiwan");
   const paths = taiwan.querySelectorAll("path");
+  console.log(paths);
 
   paths.forEach((path) => {
     const areaId = path.getAttribute("data-name");
+    console.log(areaId);
     const countyName = svgIdToCountyName[areaId];
-
     path.addEventListener("click", async () => {
       try {
+        console.log(countyName);
         const weatherData = await getWeatherData(countyName);
+        console.log(weatherData);
       } catch (error) {
         console.error(`Failed to get weather data for ${countyName}:`, error);
       }
