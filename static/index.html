@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="static/src/css/all.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -480,12 +487,78 @@
           </div>
         </div>
       </section>
+
       <section class="card-section">
-        <div class="chart">
+        <!-- Day Description -->
+        <div class="day-container">
+          <div class="day-item">
+            <div class="icon des">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <div class="day-info">
+              <div class="day-title">今日天氣說明：</div>
+              <div id="dayDes" class="day-text">晴時多雲</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MaxAT & MinAT -->
+        <div class="at-container">
+          <div class="at-item">
+            <div class="icon high"><i class="fa-solid fa-fire"></i></div>
+            <div class="at-info">
+              <div class="at-text">
+                <div class="at-title">今日最高體感溫度</div>
+                <div id="maxAT" class="percentage">30°C</div>
+              </div>
+              <div class="progress-bar">
+                <div
+                  id="maxAtBar"
+                  class="progress high"
+                  style="width: 30%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="at-item">
+            <div class="icon low"><i class="fa-solid fa-snowflake"></i></div>
+            <div class="at-info">
+              <div class="at-text">
+                <div class="at-title">今日最低體感溫度</div>
+                <div id="minAT" class="percentage">23°C</div>
+              </div>
+
+              <div class="progress-bar">
+                <div
+                  id="minAtBar"
+                  class="progress low"
+                  style="width: 23%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rain Chart -->
+
+        <div
+          class="chart"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+          "
+        >
           <canvas id="rain-chart"></canvas>
         </div>
 
-        <div class="week-temper">
+        <!-- <div class="week-temper">
           <div class="week">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -598,9 +671,44 @@
             <span class="lower">21°</span>
             <span class="day">D7</span>
           </div>
-        </div>
+        </div> -->
 
-        <div class="chart" style="width: 200px; height: 200px">
+        <!-- UV Ray -->
+        <!-- <div class="uv-container">
+          <div class="uv-info">
+            <div class="uv-value">
+              10
+              <span>危險級</span>
+            </div>
+            <div class="uv-text">
+              <div class="uv-date">2024/7/18</div>
+              <div class="uv-title">今紫外線指數</div>
+            </div>
+          </div>
+
+          <div class="uv-info">
+            <div class="uv-value">
+              11
+              <span>危險級</span>
+            </div>
+            <div class="uv-text">
+              <div class="uv-date">2024/7/19</div>
+              <div class="uv-title">明紫外線指數</div>
+            </div>
+          </div>
+
+          <div class="uv-info">
+            <div class="uv-value">
+              <span>偏南風</span>
+            </div>
+            <div class="uv-text">
+              <div class="uv-date">2024/7/18</div>
+              <div class="uv-title">現在風向</div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="chart">
           <canvas id="wet-chart"></canvas>
         </div>
 
@@ -611,6 +719,7 @@
         <div class="chart" style="width: 200px; height: 200px">
           <canvas id="week-temp-chart"></canvas>
         </div>
+        -->
       </section>
     </main>
     <script src="../static/src/javascript/utils/geo.js"></script>
