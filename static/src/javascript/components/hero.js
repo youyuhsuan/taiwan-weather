@@ -2,7 +2,7 @@ async function getHeroData(){
   let response = await fetch(`/weather/threeDays/${ctyName}`);
   let responseData = await response.json();
   let todayWeather = responseData[0].weatherElement;
-  console.log(responseData);
+  console.log(todayWeather);
 
   let nowPoP12h = todayWeather[0].time[0].elementValue[0].value;
   let nowWX = todayWeather[1].time[0].elementValue[0].value;
