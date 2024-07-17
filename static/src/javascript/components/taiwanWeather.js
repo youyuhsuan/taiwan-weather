@@ -68,6 +68,7 @@ const svgIdToCountyName = {
   yilan_country: "宜蘭縣",
   keelung_city: "基隆市",
   kinmen_country: "金門縣",
+  lianjiang_country: "連江縣",
 };
 
 let isActive = false;
@@ -84,7 +85,7 @@ async function initializeMap() {
   const paths = taiwan.querySelectorAll("path");
 
   paths.forEach((path) => {
-    const areaId = path.id;
+    const areaId = path.getAttribute("data-name");
     const countyName = svgIdToCountyName[areaId];
     const temperature = temperatureData[countyName];
 
