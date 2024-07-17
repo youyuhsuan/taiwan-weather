@@ -165,11 +165,15 @@ function getRainWeatherCard(data) {
         data: data.map((item) => item.rain),
         borderWidth: 1,
         hoverBorderWidth: 2,
+        backgroundColor: "rgba(72, 198, 239, 0.2)",
+        maxBarThickness: 100,
       },
     ],
   };
 
   const rainOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
@@ -192,6 +196,7 @@ function getRainWeatherCard(data) {
     scales: {
       y: {
         beginAtZero: true,
+        suggestedMax: Math.max(...data.map((item) => item.rain)) + 10,
       },
     },
   };
@@ -218,27 +223,36 @@ function getTempLines(lowTempObj, highTempObj) {
           {
             label: "最低溫度",
             data: lowTempObj.map((item) => item.lowTemp),
-            borderColor: "rgb(255, 99, 132)",
+            borderColor: "rgba(72, 198, 239, 0.8)",
             fill: false,
           },
           {
             label: "最高溫度",
             data: highTempObj.map((item) => item.highTemp),
-            borderColor: "rgb(37, 150, 190)",
+            borderColor: "rgba(249, 116, 143, 0.6)",
             fill: false,
           },
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         legend: { display: false },
         plugins: {
           title: {
             display: true,
-            text: "每日早晚氣溫",
+            text: "早晚預估氣溫",
             color: "#000000",
             font: {
               size: 24,
               family: "Noto Sans TC",
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                return "溫度：" + context.parsed.y + "°C";
+              },
             },
           },
         },
