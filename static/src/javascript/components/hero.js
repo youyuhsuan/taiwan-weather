@@ -1,4 +1,4 @@
-async function getHeroData(ctyName){
+async function getHeroData(ctyName) {
   let response = await fetch(`/weather/threeDays/${ctyName}`);
   let responseData = await response.json();
   let todayWeather = responseData[0].weatherElement;
@@ -14,23 +14,23 @@ async function getHeroData(ctyName){
 
   let tempArr = todayWeather[3].time;
   let wxArr = todayWeather[1].time;
-  
+
   let forecastContainer = document.querySelector(".forecast-container");
   let forecastItems = document.querySelector(".forecast-items");
 
-  tempArr.slice(0, 9).forEach(function(tempItem, index){
+  tempArr.slice(0, 9).forEach(function (tempItem, index) {
     let tempBar = tempItem.elementValue[0].value;
     let timeBar = tempItem.dataTime;
     let hourBar = parseInt(timeBar.substr(11, 2), 10);
-    
+
     let wxBar = wxArr[index].elementValue[1].value;
 
     let weatherIconClass = "";
-    if(/01/.test(wxBar)){
+    if (/01/.test(wxBar)) {
       weatherIconClass = "sun";
-    }else if(/02|03|04|05/.test(wxBar)){
+    } else if (/02|03|04|05/.test(wxBar)) {
       weatherIconClass = "cloud";
-    }else if(/06|07|08|09|10|11|12|13|14|15/.test(wxBar)){
+    } else if (/06|07|08|09|10|11|12|13|14|15/.test(wxBar)) {
       weatherIconClass = "rain";
     }
 
@@ -57,6 +57,3 @@ async function getHeroData(ctyName){
 }
 
 getHeroData();
-
-
-
