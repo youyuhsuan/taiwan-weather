@@ -1,8 +1,8 @@
-async function getHeroData(ctyName){
+async function getHeroData(){
   let response = await fetch(`/weather/threeDays/${ctyName}`);
   let responseData = await response.json();
-  console.log(responseData)
   let todayWeather = responseData[0].weatherElement;
+  console.log(responseData);
 
   let nowPoP12h = todayWeather[0].time[0].elementValue[0].value;
   let nowWX = todayWeather[1].time[0].elementValue[0].value;
@@ -18,6 +18,9 @@ async function getHeroData(ctyName){
   
   let forecastContainer = document.querySelector(".forecast-container");
   let forecastItems = document.querySelector(".forecast-items");
+
+  let maxTemp = -Infinity;
+  let minTemp = Infinity;
 
   tempArr.slice(0, 9).forEach(function(tempItem, index){
     let tempBar = tempItem.elementValue[0].value;
@@ -49,12 +52,23 @@ async function getHeroData(ctyName){
 
     let timeDiv = document.createElement("div");
     timeDiv.className = "time";
-    timeDiv.textContent = hourBar + "時";
+    if(index === 0){
+      timeDiv.textContent = "現在"
+    }else{
+      timeDiv.textContent = hourBar + "時";
+    }
     forecastItem.appendChild(timeDiv);
 
     forecastItems.appendChild(forecastItem);
     forecastContainer.appendChild(forecastItems);
+
+    if(tempBar > maxTemp)maxTemp = tempBar;
+    if(tempBar < minTemp)minTemp = tempBar;
+    document.querySelector(".MaxAT").textContent = maxTemp + "°";
+    document.querySelector(".MinAT").textContent = minTemp + "°";
   });
 }
+
+getHeroData();
 
 
