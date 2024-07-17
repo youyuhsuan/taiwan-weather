@@ -6,6 +6,7 @@ from model.getWeatherThreeDays import getWeatherThreeDays
 from model.getTemperature import getTemperature
 from model.getHumidity import getHumidity
 from model.trigger_discord import triggerDiscord
+from model.getWeather import getWeather
 from dotenv import load_dotenv
 import os
 
@@ -49,4 +50,9 @@ async def get_humidity():
 @app.get("/trigger/discord")
 async def trigger_discord():
     result = triggerDiscord()
+    return result
+
+@app.get("/weather/{location}")
+async def get_weather(location:str):
+    result = getWeather(CWB_API_KEY, location)
     return result
