@@ -6,6 +6,7 @@ from model.getWeatherThreeDays import getWeatherThreeDays
 from model.getTemperature import getTemperature
 from model.getHumidity import getHumidity
 from model.trigger_discord import triggerDiscord
+from model.getWeather import getWeather
 from dotenv import load_dotenv
 import os
 
