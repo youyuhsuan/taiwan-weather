@@ -13,10 +13,6 @@ app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static", html=True))
 
-import ssl
-
-ssl._create_default_https_context = ssl._create_unverified_context
-
 load_dotenv()
 CWB_API_KEY = os.getenv("CWB_API_KEY")
 
