@@ -192,3 +192,106 @@
 
 @media screen and (max-width: 378) {
 }
+
+/* 指標css */
+.wet-principle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wet-title {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.wet-marker {
+  border-radius: 50px;
+  width: 40px;
+  height: 250px;
+}
+
+#glass {
+  border: 2px solid;
+  border-color: #ffffff;
+  position: relative;
+  background: linear-gradient(
+    360deg,
+    rgba(249, 214, 85, 1) 30%,
+    rgba(196, 214, 131, 1) 40%,
+    rgba(143, 187, 86, 1) 50%,
+    rgba(91, 160, 41, 1) 60%,
+    rgba(40, 133, 0, 1) 70%,
+    rgba(30, 138, 158, 1) 80%,
+    rgba(21, 112, 180, 1) 100%
+  );
+}
+
+#wet-temp {
+  position: absolute;
+  bottom: 0;
+}
+
+#markings {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+#markings li {
+  padding: 0;
+  margin: 0;
+  height: 20px;
+  width: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+#markings li:after {
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 15px;
+  width: 80px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+#markings li:first-child {
+  visibility: hidden;
+}
+
+#markings li:nth-child(4):after {
+  content: "70°C";
+}
+
+#markings li:nth-child(5):after {
+  content: "60°C";
+}
+
+#markings li:nth-child(9):after {
+  content: "20°C";
+}
+
+.poa {
+  position: absolute;
+  max-width: 20px;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  right: 10px;
+}
+
+.wet-dry {
+  bottom: 10px;
+}
+
+.wet-comfort {
+  bottom: 110px;
+}
+
+.wet-uncomfort {
+  top: 10px;
+}
