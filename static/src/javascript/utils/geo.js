@@ -14,8 +14,10 @@ function success(position){
       const parser = new DOMParser();
       const doc = parser.parseFromString(data, "application/xml");
       ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
-      locationName.textContent = ctyName;
-      getHeroData();
+      if(ctyName !== "臺北市"){
+        locationName.textContent = ctyName;
+        getNewHeroData();
+      }
     }
     else{
       locationName.textContent = ctyName;
@@ -37,5 +39,6 @@ if(!navigator.geolocation){
   locationName.textContent = ctyName;
   navigator.geolocation.getCurrentPosition(success, error);
 }
+
 
 
