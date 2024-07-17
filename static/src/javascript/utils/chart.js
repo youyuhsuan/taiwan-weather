@@ -81,9 +81,7 @@ let weeks = ["日", "一", "二", "三", "四", "五", "六"];
 async function getWeather() {
   try {
     const location = "臺北市";
-    const response = await fetch(
-      `http://127.0.0.1:8000/weather/week/${location}`
-    );
+    const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -92,6 +90,10 @@ async function getWeather() {
     const rainData = data[0]["12小時降雨機率"];
     const lowTemp = data[8]["最低溫度"];
     const highTemp = data[11]["最高溫度"];
+    const lowBodyTemp = data[10]["最低體感溫度"][0].data.elementValue[0].value;
+    const highBodyTemp = data[5]["最高體感溫度"][0].data.elementValue[0].value;
+    const dayDescript =
+      data[9]["天氣預報綜合描述"][0].data.elementValue[0].value;
 
     console.log(data);
 
@@ -105,7 +107,6 @@ async function getWeather() {
       let rainPercentage = rainData[i].data.elementValue[0].value;
       let timeSwitch = rainTime === 18 ? "晚" : "早";
 
-      console.log(rainTime, rainMonth, rainFullDay, rainPercentage);
       weekRain.push({
         date: rainFullDay + "(" + timeSwitch + ")",
         rain: rainPercentage,
@@ -141,9 +142,10 @@ async function getWeather() {
       });
       // console.log(highTempObj);
     });
-
+    createDescription(dayDescript);
     getRainWeatherCard(weekRain);
     getTempLines(lowTempObj, highTempObj);
+    createBodyProgress(lowBodyTemp, highBodyTemp);
   } catch (error) {
     console.error(error);
   }
@@ -171,10 +173,10 @@ function getRainWeatherCard(data) {
     plugins: {
       title: {
         display: true,
-        text: "預估雨量",
+        text: "早晚預估雨量",
         color: "#000000",
         font: {
-          size: 16,
+          size: 24,
           family: "Noto Sans TC",
         },
       },
@@ -187,7 +189,6 @@ function getRainWeatherCard(data) {
         },
       },
     },
-
     scales: {
       y: {
         beginAtZero: true,
@@ -207,12 +208,12 @@ const weekTempChart = document
   .getElementById("week-temp-chart")
   .getContext("2d");
 function getTempLines(lowTempObj, highTempObj) {
-  const xValues = lowTempObj.map((item) => item.day);
+  const values = lowTempObj.map((item) => item.day);
   try {
     new Chart(weekTempChart, {
       type: "line",
       data: {
-        labels: xValues,
+        labels: values,
         datasets: [
           {
             label: "最低溫度",
@@ -236,7 +237,7 @@ function getTempLines(lowTempObj, highTempObj) {
             text: "每日早晚氣溫",
             color: "#000000",
             font: {
-              size: 16,
+              size: 24,
               family: "Noto Sans TC",
             },
           },
@@ -248,4 +249,19 @@ function getTempLines(lowTempObj, highTempObj) {
   }
 }
 
-function createTempCard(data) {}
+function createBodyProgress(lowBodyTemp, highBodyTemp) {
+  let maxAtText = document.getElementById("maxAT");
+  maxAtText.textContent = highBodyTemp + "°C";
+  let maxAtBar = document.getElementById("maxAtBar");
+  maxAtBar.style.width = highBodyTemp + "%";
+
+  let minAtText = document.getElementById("minAT");
+  minAtText.textContent = lowBodyTemp + "°C";
+  let minAtBar = document.getElementById("minAtBar");
+  minAtBar.style.width = lowBodyTemp + "%";
+}
+
+function createDescription(dayDescript) {
+  let description = document.getElementById("dayDes");
+  description.textContent = dayDescript;
+}
