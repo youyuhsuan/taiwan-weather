@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap");
 * {
   box-sizing: border-box;
@@ -406,7 +405,6 @@ main {
 .weather-forecast .forecast-container {
   padding: 0 40px;
   width: 100%;
-  overflow-x: hidden;
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -429,23 +427,22 @@ main {
   display: none;
 }
 .weather-forecast .forecast-item {
-  flex: 0 0 auto;
-  text-align: center;
-  padding: 0 15px;
-  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+  white-space: nowrap;
 }
-.weather-forecast .forecast-item .weather-icon {
-  font-size: 24px;
+.weather-forecast .forecast-item:first-child > * {
   margin-bottom: 8px;
 }
-.weather-forecast .forecast-item .temperature {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
 .weather-forecast .forecast-item .time {
-  font-size: 14px;
-  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+.weather-forecast .forecast-item .weather-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.5rem;
 }
 .weather-forecast .nav-button {
   background: none;
@@ -466,20 +463,6 @@ main {
 }
 .weather-forecast .nav-button.next {
   right: 0;
-}
-@media (max-width: 768px) {
-  .weather-forecast .forecast-item {
-    min-width: 70px;
-  }
-  .weather-forecast .forecast-item .weather-icon {
-    font-size: 20px;
-  }
-  .weather-forecast .forecast-item .temperature {
-    font-size: 16px;
-  }
-  .weather-forecast .forecast-item .time {
-    font-size: 12px;
-  }
 }
 @media (max-width: 576px) {
   .weather-forecast .forecast-container {
@@ -515,18 +498,6 @@ main {
   }
 }
 
-.sun::before {
-  content: "☀️";
-}
-
-.cloud::before {
-  content: "☁️";
-}
-
-.rain::before {
-  content: "🌧️";
-}
-
 #taiwan {
   max-height: 80vh;
   max-width: 100%;
@@ -556,12 +527,6 @@ main {
   margin: 0 auto;
   gap: 20px;
   margin: 40px auto;
-}
-
-.temperature {
-  position: absolute;
-  width: 20px;
-  height: 40px;
 }
 
 /*# sourceMappingURL=all.css.map */

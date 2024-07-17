@@ -47,7 +47,17 @@
             <div class="weather-forecast">
               <button class="nav-button prev">&#10094;</button>
               <div class="forecast-container">
-                <div class="forecast-items"></div>
+                <div class="forecast-items">
+                  <div class="forecast-item">
+                    <div class="time">21時</div>
+                    <img
+                      class="weather-icon"
+                      src="/static/src/icon/01_clear.svg"
+                      alt="Clear weather"
+                    />
+                    <div class="temperature bold">29°</div>
+                  </div>
+                </div>
               </div>
               <button class="nav-button next">&#10095;</button>
             </div>
@@ -495,7 +505,6 @@
           </div>
         </div>
       </section>
-
       <section class="card-section">
         <!-- Day Description -->
         <div class="white day-container">
@@ -610,6 +619,7 @@
     <script src="../static/src/javascript/utils/geo.js"></script>
     <script src="../static/src/javascript/utils/chart.js"></script>
     <script src="../static/src/javascript/components/hero.js"></script>
-    <script src="../static/src/javascript/components/getTemperature.js"></script>
+    <script src="../static/src/javascript/components/getTempHumidity.js"></script>
+    <script src="../static/src/javascript/components/getLocationWeather.js"></script>
   </body>
 </html>
