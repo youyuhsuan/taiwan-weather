@@ -98,3 +98,12 @@
     - 建置`/weather/{location}`
 - 應用 Cache 概念
 - 將網頁上線至 EC2
+
+
+### 後端-許珮萱
+
+- API建置
+    - 建置`/weather/threeDays/{location}`
+    - 建置`/weather/humidity`
+    - 優化`/trigger/discord`
+- 應用 Cache 概念
