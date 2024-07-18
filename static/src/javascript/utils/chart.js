@@ -299,5 +299,5 @@ function search(searchInput) {
 }
 
 // 初始搜尋渲染
-const searchWord = "臺北市";
+const searchWord = "新竹市";
 getWeather(searchWord);
