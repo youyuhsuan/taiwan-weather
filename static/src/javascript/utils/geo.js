@@ -19,7 +19,7 @@ function success(position) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
-        if (ctyName !== "臺北市") {
+        if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
           getHeroData(ctyName);
