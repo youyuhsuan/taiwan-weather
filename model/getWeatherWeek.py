@@ -2,7 +2,12 @@ import urllib.request as req
 from urllib.parse import quote
 import json
 
-def getWeatherWeek(CWB_API_KEY,location):
+def getWeatherWeek(CWB_API_KEY,location,weekLocationCache):
+
+    cacheResult = weekLocationCache.getData(location)
+
+    if cacheResult != None:
+        return cacheResult
 
     url = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=" + CWB_API_KEY + "&locationName=" + quote(location)
 
@@ -33,5 +38,7 @@ def getWeatherWeek(CWB_API_KEY,location):
                 localData = {"data":value}
                 dataItem.append(localData)
         data.append({elementName:dataItem})
-    
+
+        weekLocationCache.setData(location,data)
+
     return data
