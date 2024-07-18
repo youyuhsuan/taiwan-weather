@@ -1,4 +1,5 @@
 const locationName = document.querySelector(".locationName");
+const locationIcon = document.querySelector(".location-icon");
 
 let ctyName = "臺北市";
 
@@ -27,8 +28,8 @@ function success(position) {
         locationName.textContent = ctyName;
       }
     })
-    .catch(function () {
-      locationName.textContent = ctyName;
+    .catch((error) => {
+      console.error(error);
     });
 }
 
