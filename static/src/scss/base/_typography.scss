@@ -1,3 +1,5 @@
+@use "../abstracts/mixins" as *;
+
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap");
 @font-face {
   font-family: "Noto Sans TC";
@@ -81,7 +83,7 @@ $line-height-headline: $line-height-base * 1.125; // 34px
 $line-height-body: $line-height-base * 0.831; // 13px
 
 //  font-size
-$h1-font-size: $font-size-base * 2; // 28px
+$h1-font-size: $font-size-base * 1.9; // 28px
 $h2-font-size: $font-size-base * 1.75; // 30px
 $h3-font-size: $font-size-base * 1.2; // 24px
 $btn-font-size: $font-size-base * 1.188; // 19px
@@ -119,6 +121,26 @@ $btn-font-size: $font-size-base * 1.125; // 18px
 $content-font-size: $font-size-base; // 16px
 $small-font-size: $font-size-base * 0.875; // 14px
 
+body {
+  font-size: 16px;
+
+  @include breakpoint(xl) {
+    font-size: 14px;
+  }
+
+  @include breakpoint(lg) {
+    font-size: 12px;
+  }
+
+  @include breakpoint(md) {
+    font-size: 10px;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 8px;
+  }
+}
+
 * {
   font-family: $font-family;
   font-optical-sizing: auto;
@@ -130,12 +152,18 @@ h1 {
   font-weight: $font-weight-bold;
   font-size: $h1-font-size;
   line-height: 0;
+  @include breakpoint(md) {
+    font-size: 4rem;
+  }
 }
 
 h2 {
   font-weight: $font-weight-bold;
   font-size: $h2-font-size;
   line-height: 0;
+  @include breakpoint(md) {
+    font-size: 2rem;
+  }
 }
 
 h3 {
