@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from model.getWeatherWeek import getWeatherWeek
@@ -14,6 +14,7 @@ from model.TimeCache import TimeCache
 app = FastAPI()
 
 temperatureTimeCache = TimeCache()
+humidityTimeCache = TimeCache()
 
 app.mount("/static", StaticFiles(directory="static", html=True))
 
@@ -46,7 +47,7 @@ async def get_temperature():
 
 @app.get("/weather/humidity")
 async def get_humidity():
-    result = getHumidity(CWB_API_KEY)
+    result = getHumidity(CWB_API_KEY, humidityTimeCache)
     return result
 
 
