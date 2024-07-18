@@ -22,7 +22,7 @@ function success(position) {
         if (ctyName !== "臺北市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
-          getHeroData();
+          getHeroData(ctyName);
         }
       } else {
         locationName.textContent = ctyName;
