@@ -1,8 +1,8 @@
 const locationName = document.querySelector(".location-name");
-const locationIcon = document.querySelector(".location-icon");
-const currentLocationLabel = document.querySelector(".current-location-label");
 
 let ctyName = "新竹市";
+let locationIcon = document.getElementById("location-icon");
+let currentLocationLabel = document.getElementById("current-location-label");
 
 // 定位成功
 function success(position) {
@@ -17,20 +17,16 @@ function success(position) {
     })
     .then(function (data) {
       if (data) {
+        locationIcon.style.fill = "white";
+        currentLocationLabel.style.display = "block";
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
-        if (locationIcon) {
-          locationIcon.style.fill = "white";
-        } else {
-          console.log("d");
-        }
-        currentLocationLabel.style.display = "block";
         animationMap();
         if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
-          getHeroData(ctyName);
+          getHeroData(ctyName, true);
           animationMap(ctyName);
           getWeather(ctyName);
         }
@@ -38,6 +34,8 @@ function success(position) {
         locationName.textContent = ctyName;
         animationMap();
       }
+      locationIcon.style.fill = "white";
+      currentLocationLabel.style.display = "block";
     })
     .catch((error) => {
       console.error(error);

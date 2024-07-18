@@ -1,5 +1,10 @@
-async function getHeroData(ctyName = "台北") {
+async function getHeroData(ctyName = "台北", isInitial = false) {
   try {
+    if (isInitial) {
+      locationIcon.style.fill = "white";
+      currentLocationLabel.style.display = "block";
+    }
+
     locationIcon.style.fill = "none";
     currentLocationLabel.style.display = "none";
     let response = await fetch(`/weather/threeDays/${ctyName}`);
@@ -25,9 +30,16 @@ async function getHeroData(ctyName = "台北") {
         weatherImage.style.backgroundImage = newBgImage;
       }
 
+      let now = new Date();
+      let currentHour = now.getHours();
+
       if (/01/.test(nowWxNum)) {
         // 晴
-        BackgroundImageName = "01_clear";
+        if (currentHour >= 6 && currentHour <= 18) {
+          BackgroundImageName = "01_clear";
+        } else {
+          BackgroundImageName = "01_clearnight";
+        }
       } else if (/02|03/.test(nowWxNum)) {
         // 晴時多雲
         BackgroundImageName = "05_cloudy";

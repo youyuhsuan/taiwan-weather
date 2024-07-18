@@ -30,7 +30,6 @@ async function getTempHumidity(type) {
   try {
     let response = await fetch(`/weather/${type}`);
     let responseData = await response.json();
-    console.log(responseData);
     return responseData;
   } catch (error) {
     console.error(`Error fetching ${type} data:`, error);

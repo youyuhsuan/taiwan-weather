@@ -10,11 +10,13 @@ from model.getWeather import getWeather
 from dotenv import load_dotenv
 import os
 from model.TimeCache import TimeCache
+from model.LocationCache import LocationCache
 
 app = FastAPI()
 
 temperatureTimeCache = TimeCache()
 humidityTimeCache = TimeCache()
+weekLocationCache = LocationCache()
 
 app.mount("/static", StaticFiles(directory="static", html=True))
 
@@ -29,7 +31,7 @@ async def index():
 
 @app.get("/weather/week/{location}")
 async def get_weather_week(location: str):
-    result = getWeatherWeek(CWB_API_KEY, location)
+    result = getWeatherWeek(CWB_API_KEY, location, weekLocationCache)
     return result
 
 

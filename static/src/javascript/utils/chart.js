@@ -8,7 +8,6 @@ let weekTempChartInstance;
 
 async function getWeather(location) {
   try {
-    // console.log(location);
     const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
@@ -23,7 +22,6 @@ async function getWeather(location) {
 
     searchInputValue.value = "";
 
-    // console.log(data);
     const rainData = data[0]["12小時降雨機率"];
     const lowTemp = data[8]["最低溫度"];
     const highTemp = data[12]["最高溫度"];
@@ -32,8 +30,6 @@ async function getWeather(location) {
 
     const dayDescript =
       data[10]["天氣預報綜合描述"][0].data.elementValue[0].value;
-
-    // console.log(data);
 
     // 雨量(三天早晚)
     for (let i = 0; i < 6; i++) {
@@ -63,7 +59,6 @@ async function getWeather(location) {
         day: day + "(" + dailySwitch + ")",
         lowTemp: lowTempValue,
       });
-      // console.log(lowTempObj);
     });
 
     // 一週溫度(最高溫)
@@ -78,7 +73,6 @@ async function getWeather(location) {
         day: day + "(" + dailySwitch + ")",
         highTemp: highTempValue,
       });
-      // console.log(highTempObj);
     });
     createDescription(dayDescript, location);
     getRainWeatherCard(weekRain);
@@ -231,6 +225,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     searchInput.value = clickCity;
     if (searchInput.value !== "") {
       search(searchInput.value);
+      animationMap(searchInput.value);
       selectCity.value = "";
     } else {
       alert("請輸入縣市");
@@ -241,6 +236,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let typeInput = searchInput.value;
     if (typeInput !== "") {
       search(typeInput);
+      animationMap(typeInput);
     } else {
       alert("請輸入縣市");
     }
@@ -251,6 +247,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       let typeInput = searchInput.value;
       if (typeInput !== "") {
         search(typeInput);
+        animationMap(typeInput);
       } else {
         alert("請輸入縣市");
       }
