@@ -99,6 +99,15 @@
   - 串接後端 API，傳送指定資料至後端、解析與轉換數據格式
   - 天氣資訊渲染，如當日天氣 list、對應背景圖等
 
+### 後端-許珮萱
+
+- ReadMe 編寫
+- API建置
+    - 建置`/weather/threeDays/{location}`
+    - 建置`/weather/humidity`
+    - 優化`/trigger/discord`
+- 應用 Cache 概念
+
 ### 後端-楊松蒲
 
 - 後端主架構程式碼
@@ -106,5 +115,6 @@
   - 建置`/weather/week/{location}`
   - 建置`/weather/temperature`
   - 建置`/weather/{location}`
+  - 建置`/trigger/discord`
 - 應用 Cache 概念
 - 將網頁上線至 EC2
