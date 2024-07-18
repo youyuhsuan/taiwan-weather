@@ -1,6 +1,8 @@
 const locationName = document.querySelector(".location-name");
 
 let ctyName = "新竹市";
+let locationIcon = document.getElementById("location-icon");
+let currentLocationLabel = document.getElementById("current-location-label");
 
 // 定位成功
 function success(position) {
@@ -15,10 +17,6 @@ function success(position) {
     })
     .then(function (data) {
       if (data) {
-        let locationIcon = document.getElementById("location-icon");
-        let currentLocationLabel = document.getElementById(
-          "current-location-label"
-        );
         locationIcon.style.fill = "white";
         currentLocationLabel.style.display = "block";
         const parser = new DOMParser();
