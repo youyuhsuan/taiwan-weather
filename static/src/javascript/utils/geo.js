@@ -1,6 +1,4 @@
 const locationName = document.querySelector(".location-name");
-const locationIcon = document.querySelector(".location-icon");
-const currentLocationLabel = document.querySelector(".current-location-label");
 
 let ctyName = "新竹市";
 
@@ -17,15 +15,15 @@ function success(position) {
     })
     .then(function (data) {
       if (data) {
+        let locationIcon = document.getElementById("location-icon");
+        let currentLocationLabel = document.getElementById(
+          "current-location-label"
+        );
+        locationIcon.style.fill = "white";
+        currentLocationLabel.style.display = "block";
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
-        // if (locationIcon) {
-        //   locationIcon.style.fill = "white";
-        // } else {
-        //   console.log("d");
-        // }
-        // currentLocationLabel.style.display = "block";
         animationMap();
         if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;

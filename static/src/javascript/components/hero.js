@@ -30,9 +30,16 @@ async function getHeroData(ctyName = "台北", isInitial = false) {
         weatherImage.style.backgroundImage = newBgImage;
       }
 
+      let now = new Date();
+      let currentHour = now.getHours();
+
       if (/01/.test(nowWxNum)) {
         // 晴
-        BackgroundImageName = "01_clear";
+        if (currentHour >= 6 && currentHour <= 18) {
+          BackgroundImageName = "01_clear";
+        } else {
+          BackgroundImageName = "01_clearnight";
+        }
       } else if (/02|03/.test(nowWxNum)) {
         // 晴時多雲
         BackgroundImageName = "05_cloudy";
