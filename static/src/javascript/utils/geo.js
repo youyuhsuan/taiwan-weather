@@ -1,7 +1,7 @@
 const locationName = document.querySelector(".locationName");
 const locationIcon = document.querySelector(".location-icon");
 
-let ctyName = "臺北市";
+let ctyName = "新竹市";
 
 // 定位成功
 function success(position) {
@@ -19,10 +19,11 @@ function success(position) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
-        if (ctyName !== "臺北市") {
+        if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
           getHeroData(ctyName);
+          getWeather(ctyName);
         }
       } else {
         locationName.textContent = ctyName;
