@@ -8,6 +8,7 @@ function selectLocation() {
     path.addEventListener("click", async () => {
       try {
         getHeroData(countyName);
+        getWeather(countyName);
       } catch (error) {
         console.error(`Failed to get weather data for ${countyName}:`, error);
       }

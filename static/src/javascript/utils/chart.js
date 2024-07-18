@@ -8,15 +8,18 @@ let weekTempChartInstance;
 
 async function getWeather(location) {
   try {
-    console.log(location);
+    // console.log(location);
     const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
       alert("無相關資料");
     }
     const data = await response.json();
+    weekRain = [];
+    lowTempObj = [];
+    highTempObj = [];
 
-    console.log(data);
+    // console.log(data);
     const rainData = data[0]["12小時降雨機率"];
     const lowTemp = data[8]["最低溫度"];
     const highTemp = data[12]["最高溫度"];
@@ -256,9 +259,5 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 function search(searchInput) {
   console.log(searchInput);
-  weekRain = [];
-  lowTempObj = [];
-  highTempObj = [];
-
   getWeather(searchInput);
 }
