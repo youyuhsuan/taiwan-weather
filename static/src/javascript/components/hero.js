@@ -121,6 +121,8 @@ async function getHeroData(ctyName = "台北") {
         document.querySelector(".MaxAT span").textContent = maxTemp + "°";
         document.querySelector(".MinAT span").textContent = minTemp + "°";
       });
+
+      postBotData(ctyName, nowWX, nowWxNum, nowT, nowPoP12h);
     } else {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
