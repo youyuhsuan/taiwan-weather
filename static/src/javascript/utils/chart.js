@@ -260,4 +260,5 @@ document.addEventListener("DOMContentLoaded", (e) => {
 function search(searchInput) {
   console.log(searchInput);
   getWeather(searchInput);
+  getHeroData(searchInput);
 }
