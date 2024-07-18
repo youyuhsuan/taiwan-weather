@@ -5,6 +5,7 @@
   position: absolute;
   bottom: 0;
   padding: 20px;
+  display: none;
 }
 
 .wet-principle {

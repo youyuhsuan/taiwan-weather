@@ -1,3 +1,6 @@
+let isActive = false;
+let currentPrinciple = null;
+
 const svgIdToCountyName = {
   penghu_country: "澎湖縣",
   chiayi_country: "嘉義縣",
@@ -22,8 +25,6 @@ const svgIdToCountyName = {
   kinmen_country: "金門縣",
   lianjiang_country: "連江縣",
 };
-
-let isActive = false;
 
 async function getTempHumidity(type) {
   try {
@@ -115,17 +116,14 @@ async function initializeMap(type) {
   });
 }
 
-function setupButton(buttonClass, type) {
+function setupButton(buttonClass, type, principle) {
   const button = document.querySelector(`.${buttonClass}`);
   button.addEventListener("click", () => {
-    isActive = !isActive;
-    button.classList.toggle("active", isActive);
-    document
-      .querySelector(`.${type === "type" ? "humidity" : "thermostat"}`)
-      .classList.remove("active");
+    togglePrinciple(principle);
+    updateButtonState(buttonClass, type);
     initializeMap(type);
   });
 }
 
-setupButton("thermostat", "temperature");
-setupButton("humidity", "humidity");
+setupButton("thermostat", "temperature", "temp-principle");
+setupButton("humidity", "humidity", "wet-principle");

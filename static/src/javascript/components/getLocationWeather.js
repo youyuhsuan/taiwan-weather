@@ -11,15 +11,12 @@ async function getLocationWeather(location) {
 function selectLocation() {
   const taiwan = document.getElementById("taiwan");
   const paths = taiwan.querySelectorAll("path");
-  console.log(paths);
   paths.forEach((path) => {
     const areaId = path.getAttribute("data-name");
-    console.log(areaId);
     const countyName = svgIdToCountyName[areaId];
     path.addEventListener("click", async () => {
       try {
         const weatherData = await getLocationWeather(countyName);
-        console.log(weatherData);
       } catch (error) {
         console.error(`Failed to get weather data for ${countyName}:`, error);
       }

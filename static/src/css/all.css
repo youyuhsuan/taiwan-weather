@@ -340,10 +340,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   width: 50%;
   color: #ffffff;
-  fill: #ffffff;
 }
 @media (max-width: 1200px) {
   .hero-info {
