@@ -39,6 +39,6 @@ def getWeatherWeek(CWB_API_KEY,location,weekLocationCache):
                 dataItem.append(localData)
         data.append({elementName:dataItem})
 
-        weekLocationCache.setData(location,data)
+    weekLocationCache.setData(location,data)
 
     return data
