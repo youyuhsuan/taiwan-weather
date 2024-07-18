@@ -4,7 +4,6 @@ function selectLocation() {
   paths.forEach((path) => {
     const areaId = path.getAttribute("data-name");
     const countyName = svgIdToCountyName[areaId];
-    console.log(countyName);
     path.addEventListener("click", async () => {
       try {
         getHeroData(countyName);

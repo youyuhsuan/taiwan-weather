@@ -1,5 +1,6 @@
-const locationName = document.querySelector(".locationName");
+const locationName = document.querySelector(".location-name");
 const locationIcon = document.querySelector(".location-icon");
+const currentLocationLabel = document.querySelector(".current-location-label");
 
 let ctyName = "臺北市";
 
@@ -19,13 +20,18 @@ function success(position) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
+        locationIcon.style.fill = "white";
+        currentLocationLabel.style.display = "block";
+        animationMap(ctyName);
         if (ctyName !== "臺北市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
           getHeroData();
+          animationMap(ctyName);
         }
       } else {
         locationName.textContent = ctyName;
+        animationMap();
       }
     })
     .catch((error) => {

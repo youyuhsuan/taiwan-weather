@@ -24,27 +24,24 @@ main {
     flex-direction: column;
     height: auto;
     gap: 2em;
-    height: 1200px;
-  }
-
-  @include breakpoint(sm) {
-    height: 100dvh;
   }
 
   &-section {
     padding: 4rem;
+    height: 80dvh;
+    @include breakpoint(xl) {
+      height: 100%;
+    }
+    @include breakpoint(sm) {
+      padding: 0.4rem;
+    }
+    @include breakpoint(xs) {
+      padding: 0rem;
+    }
     background: {
       image: $gradient, url("/static/src/image/01_clear.jpg"), $gradient;
       position: center center, center 0rem, center center;
       repeat: no-repeat;
-    }
-
-    @include breakpoint(sm) {
-      padding: 2rem;
-    }
-
-    @include breakpoint(xs) {
-      padding: 1rem;
     }
   }
 
@@ -61,6 +58,7 @@ main {
     }
     @include breakpoint(md) {
       width: 100%;
+      padding: 0.4rem;
     }
   }
 
@@ -69,15 +67,23 @@ main {
     flex: 1 1 auto;
   }
 }
+
 .location-group {
   margin-right: auto;
   display: flex;
   align-items: center;
   color: $white;
-}
-
-.locationName {
-  margin-right: 8px;
+  .location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .location-name {
+    margin: 4px 8px 4px 0;
+  }
+  .current-location-label {
+    display: none;
+  }
 }
 
 .details {
@@ -224,28 +230,27 @@ main {
 
 #taiwan {
   max-height: 80vh;
-  max-width: 100%;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
   path {
     stroke: $white;
     fill: transparent;
     transition: 0.5s;
     cursor: pointer;
-    &:hover {
+    &:hover,
+    &.active {
       fill: $white-opacity-25;
       transform: translate(-5px, -5px);
     }
   }
 }
 
+.location-icon {
+  fill: none;
+}
+
 $light-gray: #e0e0e0;
 
-// 混合
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -433,87 +438,6 @@ $light-gray: #e0e0e0;
     width: 300px;
   }
 }
-
-// 濕度指標 CSS
-// .wet-principle {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-// .wet-title {
-//   font-size: 16px;
-//   margin-top: 20px;
-//   color: $white;
-// }
-
-// .wet-marker {
-//   border-radius: 50px;
-//   width: 40px;
-//   height: 250px;
-// }
-
-// #glass {
-//   border: 2px solid $white;
-//   position: relative;
-//   background: linear-gradient(
-//     360deg,
-//     rgba(249, 214, 85, 1) 30%,
-//     rgba(196, 214, 131, 1) 40%,
-//     rgba(143, 187, 86, 1) 50%,
-//     rgba(91, 160, 41, 1) 60%,
-//     rgba(40, 133, 0, 1) 70%,
-//     rgba(30, 138, 158, 1) 80%,
-//     rgba(21, 112, 180, 1) 100%
-//   );
-// }
-
-// #wet-temp {
-//   position: absolute;
-//   bottom: 0;
-// }
-
-// #markings {
-//   padding: 0;
-//   margin: 0;
-//   list-style-type: none;
-//   position: absolute;
-//   top: -30px;
-//   right: 0;
-
-//   li {
-//     padding: 0;
-//     margin: 0;
-//     height: 20px;
-//     width: 10px;
-//     border-bottom: 2px solid rgba(255, 255, 255, 0.7);
-
-//     &:after {
-//       position: absolute;
-//       margin-top: 30px;
-//       margin-left: 15px;
-//       width: 80px;
-//       color: $white;
-//       font-size: 14px;
-//     }
-
-//     &:first-child {
-//       visibility: hidden;
-//     }
-
-//     &:nth-child(4):after {
-//       content: "70°C";
-//     }
-
-//     &:nth-child(5):after {
-//       content: "60°C";
-//     }
-
-//     &:nth-child(9):after {
-//       content: "20°C";
-//     }
-//   }
-// }
 
 .poa {
   position: absolute;

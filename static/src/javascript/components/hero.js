@@ -1,5 +1,7 @@
 async function getHeroData(ctyName = "台北") {
   try {
+    locationIcon.style.fill = "none";
+    currentLocationLabel.style.display = "none";
     let response = await fetch(`/weather/threeDays/${ctyName}`);
     if (response) {
       let responseData = await response.json();
@@ -9,7 +11,7 @@ async function getHeroData(ctyName = "台北") {
       let nowT = todayWeather[3].time[0].elementValue[0].value;
       let nowWD = todayWeather[9].time[0].elementValue[0].value;
 
-      document.querySelector(".locationName").textContent = ctyName;
+      document.querySelector(".location-name").textContent = ctyName;
       document.querySelector(".PoP12h span").textContent = nowPoP12h + "%";
       document.querySelector(".Wx").textContent = nowWX;
       document.querySelector(".AT").textContent = nowT + "°";
@@ -36,6 +38,7 @@ async function getHeroData(ctyName = "台北") {
         let weatherIconAlt = "";
 
         let BackgroundImageName = "";
+
         function getBackgroundImage(BackgroundImageName) {
           let weatherImage = document.querySelector(".hero-section");
           let currentBgImage =
