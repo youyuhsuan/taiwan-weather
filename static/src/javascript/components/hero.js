@@ -9,10 +9,10 @@ async function getHeroData() {
   let nowT = todayWeather[3].time[0].elementValue[0].value;
   let nowWD = todayWeather[9].time[0].elementValue[0].value;
   document.querySelector(".locationName").textContent = ctyName;
-  document.querySelector(".PoP12h").textContent = nowPoP12h + "%";
+  document.querySelector(".PoP12h span").textContent = nowPoP12h + "%";
   document.querySelector(".Wx").textContent = nowWX;
   document.querySelector(".AT").textContent = nowT + "°";
-  document.querySelector(".WD").textContent = nowWD;
+  document.querySelector(".WD span").textContent = nowWD;
 
   let tempArr = todayWeather[3].time;
   let wxArr = todayWeather[1].time;
@@ -97,8 +97,8 @@ async function getHeroData() {
 
     if (tempBar > maxTemp) maxTemp = tempBar;
     if (tempBar < minTemp) minTemp = tempBar;
-    document.querySelector(".MaxAT").textContent = maxTemp + "°";
-    document.querySelector(".MinAT").textContent = minTemp + "°";
+    document.querySelector(".MaxAT span").textContent = maxTemp + "°";
+    document.querySelector(".MinAT span").textContent = minTemp + "°";
   });
 }
 
