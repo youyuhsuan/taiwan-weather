@@ -10,6 +10,7 @@ class DiscordData(BaseModel):
     pop12h: str
 
 async def triggerDiscord(discord_data):
+    return
     date = datetime.today().date().isoformat()
     location = discord_data.location
     wx = discord_data.wx
