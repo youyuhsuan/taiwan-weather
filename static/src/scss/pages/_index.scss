@@ -12,6 +12,7 @@ main {
 .hero {
   max-width: 1620px;
   width: 100%;
+  height: 100%;
   gap: 2.5em;
   display: flex;
   margin: 0 auto;
@@ -27,12 +28,26 @@ main {
 
   &-section {
     padding: 4rem;
+    height: 80dvh;
+
+    @include breakpoint(xl) {
+      height: 900px;
+    }
+
+    @include breakpoint(md) {
+      height: 1500px;
+    }
+
     @include breakpoint(sm) {
+      height: 1020px;
       padding: 0.4rem;
     }
+
     @include breakpoint(xs) {
+      height: 920px;
       padding: 0rem;
     }
+
     background: {
       image: $gradient, url("/static/src/image/01_clear.jpg"), $gradient;
       position: center center, center 0rem, center center;
