@@ -8,6 +8,7 @@ async function getHeroData() {
   let nowWX = todayWeather[1].time[0].elementValue[0].value;
   let nowT = todayWeather[3].time[0].elementValue[0].value;
   let nowWD = todayWeather[9].time[0].elementValue[0].value;
+  document.querySelector(".locationName").textContent = ctyName;
   document.querySelector(".PoP12h").textContent = nowPoP12h + "%";
   document.querySelector(".Wx").textContent = nowWX;
   document.querySelector(".AT").textContent = nowT + "°";
@@ -29,32 +30,43 @@ async function getHeroData() {
 
     let wxBar = wxArr[index].elementValue[1].value;
 
+    // 根據天氣判斷 icon 與背景圖
     let weatherIconSrc = "";
     let weatherIconAlt = "";
-    if (/01/.test(wxBar)) {
+
+    let BackgroundImageName = ""
+    function getBackgroundImage(BackgroundImageName){
+      let weatherImage = document.querySelector(".hero-section");
+      let currentBgImage = window.getComputedStyle(weatherImage).backgroundImage;
+      let newBgImage = currentBgImage.replace(/url\([^)]*\)/, `url(/static/src/image/${BackgroundImageName}.jpg)`);
+      weatherImage.style.backgroundImage = newBgImage;
+    }
+
+    if(/01/.test(wxBar)){ // 晴
       weatherIconSrc = "/static/src/icon/01_clear.svg";
       weatherIconAlt = "Clear weather";
-    } else if (/02|03|04/.test(wxBar)) {
+      BackgroundImageName = "01_clear"
+      getBackgroundImage(BackgroundImageName)
+    }else if(/02|03/.test(wxBar)){ // 晴時多雲
       weatherIconSrc = "/static/src/icon/03_partly_cloudy_day.svg";
       weatherIconAlt = "Partly-Cloudy weather";
-    } else if (/05/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/03_cloudy.svg";
+      BackgroundImageName = "05_cloudy"
+      getBackgroundImage(BackgroundImageName)
+    }else if(/0[4-7]|2[4-8]/.test(wxBar)){ // 多雲、陰、霧
+      weatherIconSrc = "/static/src/icon/05_cloudy.svg";
       weatherIconAlt = "Cloudy weather";
-    } else if (/06|07|08/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/08_thunderstorm.svg";
-      weatherIconAlt = "thunderstorm weather";
-    } else if (/09|10/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/09_rainy_light.svg";
-      weatherIconAlt = "rainy-light weather";
-    } else if (/11/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/11_rainy_heavy.svg";
-      weatherIconAlt = "rainy-heavy weather";
-    } else if (/15|16|17/.test(wxBar)) {
+      BackgroundImageName = "05_cloudy"
+      getBackgroundImage(BackgroundImageName)
+    }else if(/0[8-9]|1[0-9]|2[0-2]|29|3[0-9]|41/.test(wxBar)){ // 雨
+      weatherIconSrc = "/static/src/icon/rainy.svg";
+      weatherIconAlt = "rainy weather";
+      BackgroundImageName = "rain"
+      getBackgroundImage(BackgroundImageName)
+    }else if(/23|42/.test(wxBar)) { // 雪
       weatherIconSrc = "/static/src/icon/15_snowing.svg";
       weatherIconAlt = "snowing weather";
-    } else if (/18/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/18_weather_hail.svg";
-      weatherIconAlt = "hail weather";
+      BackgroundImageName = "15_snowing"
+      getBackgroundImage(BackgroundImageName)
     }
 
     let forecastItem = document.createElement("div");
@@ -88,98 +100,6 @@ async function getHeroData() {
     document.querySelector(".MaxAT").textContent = maxTemp + "°";
     document.querySelector(".MinAT").textContent = minTemp + "°";
   });
-}
-
-// 重新 fetch 資訊
-async function getNewHeroData() {
-  let response = await fetch(`/weather/threeDays/${ctyName}`);
-  let responseData = await response.json();
-  let todayWeather = responseData[0].weatherElement;
-  console.log(responseData);
-
-  let nowPoP12h = todayWeather[0].time[0].elementValue[0].value;
-  let nowWX = todayWeather[1].time[0].elementValue[0].value;
-  let nowT = todayWeather[3].time[0].elementValue[0].value;
-  let nowWD = todayWeather[9].time[0].elementValue[0].value;
-  document.querySelector(".PoP12h").textContent = nowPoP12h + "%";
-  document.querySelector(".Wx").textContent = nowWX;
-  document.querySelector(".AT").textContent = nowT + "°";
-  document.querySelector(".WD").textContent = nowWD;
-
-  let tempArr = todayWeather[3].time;
-  let wxArr = todayWeather[1].time;
-
-  let forecastContainer = document.querySelector(".forecast-container");
-  let forecastItems = document.querySelector(".forecast-items");
-  forecastItems.innerHTML = ""; // Clear existing items
-
-  let maxTemp = -Infinity;
-  let minTemp = Infinity;
-
-  tempArr.slice(0, 9).forEach(function (tempItem, index) {
-    let tempBar = tempItem.elementValue[0].value;
-    let timeBar = tempItem.dataTime;
-    let hourBar = parseInt(timeBar.substr(11, 2), 10);
-
-    let wxBar = wxArr[index].elementValue[1].value;
-
-    let weatherIconSrc = "";
-    let weatherIconAlt = "";
-    if (/01/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/01_clear.svg";
-      weatherIconAlt = "Clear weather";
-    } else if (/02|03|04/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/03_partly_cloudy_day.svg";
-      weatherIconAlt = "Partly-Cloudy weather";
-    } else if (/05/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/03_cloudy.svg";
-      weatherIconAlt = "Cloudy weather";
-    } else if (/06|07|08/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/08_thunderstorm.svg";
-      weatherIconAlt = "thunderstorm weather";
-    } else if (/09|10/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/09_rainy_light.svg";
-      weatherIconAlt = "rainy-light weather";
-    } else if (/11/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/11_rainy_heavy.svg";
-      weatherIconAlt = "rainy-heavy weather";
-    } else if (/15|16|17/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/15_snowing.svg";
-      weatherIconAlt = "snowing weather";
-    } else if (/18/.test(wxBar)) {
-      weatherIconSrc = "/static/src/icon/18_weather_hail.svg";
-      weatherIconAlt = "hail weather";
-    }
-
-    let forecastItem = document.createElement("div");
-    forecastItem.className = "forecast-item";
-
-    let timeDiv = document.createElement("div");
-    timeDiv.className = "time";
-    timeDiv.textContent = index === 0 ? "現在" : hourBar + "時";
-    forecastItem.appendChild(timeDiv);
-
-    let weatherIcon = document.createElement("img");
-    weatherIcon.className = `weather-icon`;
-    weatherIcon.src = weatherIconSrc;
-    weatherIcon.alt = weatherIconAlt;
-    forecastItem.appendChild(weatherIcon);
-
-    let temperatureDiv = document.createElement("div");
-    temperatureDiv.className = "temperature";
-    temperatureDiv.textContent = tempBar + "°";
-    forecastItem.appendChild(temperatureDiv);
-
-    forecastItems.appendChild(forecastItem);
-
-    if (tempBar > maxTemp) maxTemp = tempBar;
-    if (tempBar < minTemp) minTemp = tempBar;
-  });
-
-  document.querySelector(".MaxAT").textContent = maxTemp + "°";
-  document.querySelector(".MinAT").textContent = minTemp + "°";
-
-  forecastContainer.appendChild(forecastItems);
 }
 
 getHeroData();
