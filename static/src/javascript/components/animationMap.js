@@ -1,5 +1,4 @@
 function animationMap(location = "新竹市") {
-  console.log(location);
   const taiwan = document.getElementById("taiwan");
   const paths = taiwan.querySelectorAll("path");
   paths.forEach((path) => {
