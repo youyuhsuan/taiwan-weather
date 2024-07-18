@@ -5,7 +5,6 @@ async function postBotData(ctyName, nowWX, nowWxNum, nowT, nowPoP12h) {
     t: nowT,
     pop12h: nowPoP12h,
   };
-  console.log(data);
 
   try {
     await fetch("/trigger/discord", {
