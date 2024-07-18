@@ -124,7 +124,7 @@ function getRainWeatherCard(data) {
       tooltip: {
         callbacks: {
           label: function (context) {
-            return "雨量：" + context.parsed.y + "%";
+            return "降雨機率：" + context.parsed.y + "%";
           },
         },
       },
