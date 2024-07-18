@@ -1,11 +1,12 @@
-async function getHeroData(ctyName = "台北") {
+async function getHeroData(ctyName = "台北", isInitial = false) {
   try {
-    // let locationIcon = document.getElementById("location-icon");
-    // let currentLocationLabel = document.getElementById(
-    //   "current-location-label"
-    // );
-    // locationIcon.style.fill = "none";
-    // currentLocationLabel.style.display = "none";
+    if (isInitial) {
+      locationIcon.style.fill = "white";
+      currentLocationLabel.style.display = "block";
+    }
+
+    locationIcon.style.fill = "none";
+    currentLocationLabel.style.display = "none";
     let response = await fetch(`/weather/threeDays/${ctyName}`);
     if (response) {
       let responseData = await response.json();

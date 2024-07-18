@@ -28,7 +28,7 @@ function success(position) {
         if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
-          getHeroData(ctyName);
+          getHeroData(ctyName, true);
           animationMap(ctyName);
           getWeather(ctyName);
         }
@@ -36,6 +36,8 @@ function success(position) {
         locationName.textContent = ctyName;
         animationMap();
       }
+      locationIcon.style.fill = "white";
+      currentLocationLabel.style.display = "block";
     })
     .catch((error) => {
       console.error(error);
