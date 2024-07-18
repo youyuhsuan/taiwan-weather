@@ -65,19 +65,19 @@
 ### 前端-游語軒
 氣象網站主要負責項目包含:
 
-- 互動式地圖實現
+1. 互動式地圖實現
     - 建立兩種方式查詢縣市氣象數據
     - 實現地圖動畫效果
-- 數據獲取與展示
+2. 數據獲取與展示
     - 使用 Fetch API 串接後端指定數據
         - 例如：`/weather/humidity`（濕度數據）
         - 例如：`/weather/temperature`（溫度數據）
-- 數據可視化
+3. 數據可視化
     - 建立數據與顏色的映射機制
         - 如：`{ value: 70, color: [40, 133, 0] }`
     - 根據映射結果進行地圖渲染
-- 用戶體驗優化
+4. 用戶體驗優化
     - 實現滾動動畫效果
-- 團隊協作
+5. 團隊協作
     - 參與前端工作分配
-- 使用Chart.js JavaScript Library生成雨量直條圖(Bar Chart)及早晚溫度曲線圖(Line Chart)
+6. 使用Chart.js JavaScript Library生成雨量直條圖(Bar Chart)及早晚溫度曲線圖(Line Chart)
