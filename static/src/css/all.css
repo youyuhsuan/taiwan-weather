@@ -318,7 +318,7 @@ main {
 .hero-section {
   padding: 4rem;
   height: 80dvh;
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(66, 151, 255, 0.25)), url("/static/src/image/01_clear.jpg"), linear-gradient(to left, rgba(255, 255, 255, 0), rgba(66, 151, 255, 0.25));
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(66, 151, 255, 0.25)), url("/static/src/image/whiteImage.jpg");
   background-position: center center, center 0rem, center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -381,11 +381,8 @@ main {
   flex-direction: column;
   align-items: flex-start;
 }
-.location-group .location-name {
+.location-group #location-name {
   margin: 4px 8px 4px 0;
-}
-.location-group .current-location-label {
-  display: none;
 }
 
 .details {

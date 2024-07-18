@@ -8,7 +8,6 @@ let weekTempChartInstance;
 
 async function getWeather(location) {
   try {
-    // console.log(location);
     const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
@@ -231,6 +230,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     searchInput.value = clickCity;
     if (searchInput.value !== "") {
       search(searchInput.value);
+      animationMap(searchInput.value);
       selectCity.value = "";
     } else {
       alert("請輸入縣市");
@@ -241,6 +241,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     let typeInput = searchInput.value;
     if (typeInput !== "") {
       search(typeInput);
+      animationMap(typeInput);
     } else {
       alert("請輸入縣市");
     }
@@ -251,6 +252,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       let typeInput = searchInput.value;
       if (typeInput !== "") {
         search(typeInput);
+        animationMap(typeInput);
       } else {
         alert("請輸入縣市");
       }
