@@ -25,13 +25,13 @@ def getWeatherWeek(CWB_API_KEY,location):
                     localData = {"data":value}
                     dataItem.append(localData)
             except:
-                localData = {"data": []}
+                localData = {"data": {}}
                 dataItem.append(localData)
         else:
             for j in range(14):
                 value = my_data["records"]["locations"][0]["location"][0]["weatherElement"][i]["time"][j]
                 localData = {"data":value}
                 dataItem.append(localData)
-            data.append({elementName:dataItem})
-
+        data.append({elementName:dataItem})
+    
     return data
