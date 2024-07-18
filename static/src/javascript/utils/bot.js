@@ -1,9 +1,10 @@
-async function postBotData(ctyName, nowWX, nowWxNum, nowT, nowPoP12h) {
+async function postBotData(ctyName, nowWX, nowWxNum, nowT, nowPoP12h, date) {
   let data = {
     location: ctyName,
     wx: nowWX + "," + nowWxNum,
     t: nowT,
     pop12h: nowPoP12h,
+    date: date instanceof Date ? date.toISOString() : date,
   };
 
   try {
@@ -13,6 +14,6 @@ async function postBotData(ctyName, nowWX, nowWxNum, nowT, nowPoP12h) {
       body: JSON.stringify(data),
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error posting data:", error);
   }
 }
