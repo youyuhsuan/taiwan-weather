@@ -9,8 +9,11 @@ from model.trigger_discord import triggerDiscord
 from model.getWeather import getWeather
 from dotenv import load_dotenv
 import os
+from model.TimeCache import TimeCache
 
 app = FastAPI()
+
+temperatureTimeCache = TimeCache()
 
 app.mount("/static", StaticFiles(directory="static", html=True))
 
@@ -37,7 +40,7 @@ async def get_weather_threeDays(location: str):
 
 @app.get("/weather/temperature")
 async def get_temperature():
-    result = getTemperature(CWB_API_KEY)
+    result = getTemperature(CWB_API_KEY,temperatureTimeCache)
     return result
 
 
