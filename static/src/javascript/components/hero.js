@@ -12,6 +12,39 @@ async function getHeroData(ctyName = "台北") {
       let nowT = todayWeather[3].time[0].elementValue[0].value;
       let nowWD = todayWeather[9].time[0].elementValue[0].value;
 
+      // 根據天氣判斷背景圖
+      let BackgroundImageName = "";
+      function getBackgroundImage(BackgroundImageName) {
+        let weatherImage = document.querySelector(".hero-section");
+        let currentBgImage =
+          window.getComputedStyle(weatherImage).backgroundImage;
+        let newBgImage = currentBgImage.replace(
+          /url\([^)]*\)/,
+          `url(/static/src/image/${BackgroundImageName}.jpg)`
+        );
+        weatherImage.style.backgroundImage = newBgImage;
+      }
+
+      if (/01/.test(nowWxNum)) {
+        // 晴
+        BackgroundImageName = "01_clear";
+      } else if (/02|03/.test(nowWxNum)) {
+        // 晴時多雲
+        BackgroundImageName = "05_cloudy";
+      } else if (/0[4-7]|2[4-8]/.test(nowWxNum)) {
+        // 多雲、陰、霧
+        BackgroundImageName = "05_cloudy";
+      } else if (/0[8-9]|1[0-9]|2[0-2]|29|3[0-9]|41/.test(nowWxNum)) {
+        // 雨
+        BackgroundImageName = "rain";
+      } else if (/23|42/.test(nowWxNum)) {
+        // 雪
+        BackgroundImageName = "15_snowing";
+      }
+      getBackgroundImage(BackgroundImageName);
+
+      // 替換氣候詳細資訊
+      document.querySelector(".location-name").textContent = ctyName;
       document.querySelector(".PoP12h span").textContent = nowPoP12h + "%";
       document.querySelector(".Wx").textContent = nowWX;
       document.querySelector(".AT").textContent = nowT + "°";
