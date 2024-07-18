@@ -113,7 +113,7 @@ function getRainWeatherCard(data) {
     plugins: {
       title: {
         display: true,
-        text: "早晚預估降雨量",
+        text: "早晚預估降雨機率",
         color: "#000000",
         font: {
           size: 24,
