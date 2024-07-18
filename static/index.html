@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="static/src/css/all.css" rel="stylesheet" type="text/css" />
-    <!-- <link href="static/src/css/chart.css" rel="stylesheet" type="text/css" /> -->
+    <link href="static/src/css/chart.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -560,7 +560,39 @@
           </div>
         </div>
       </section>
+
       <section class="card-section">
+        <!-- City Selection -->
+        <div class="search-container">
+          <div class="search-box">
+            <select name="city" id="city">
+              <option value="">縣市名 &#11206;</option>
+              <option value="基隆市">基隆市</option>
+              <option value="臺北市">臺北市</option>
+              <option value="新北市">新北市</option>
+              <option value="桃園市">桃園市</option>
+              <option value="臺中市">臺中市</option>
+              <option value="臺南市">臺南市</option>
+              <option value="高雄市">高雄市</option>
+              <option value="新竹市">新竹市</option>
+              <option value="苗栗縣">苗栗縣</option>
+              <option value="彰化縣">彰化縣</option>
+              <option value="南投縣">南投縣</option>
+              <option value="雲林縣">雲林縣</option>
+              <option value="嘉義縣">嘉義縣</option>
+              <option value="屏東縣">屏東縣</option>
+              <option value="宜蘭縣">宜蘭縣</option>
+              <option value="花蓮縣">花蓮縣</option>
+              <option value="臺東縣">臺東縣</option>
+              <option value="澎湖縣">澎湖縣</option>
+              <option value="金門縣">金門縣</option>
+              <option value="連江縣">連江縣</option>
+            </select>
+            <input type="text" class="search-input" placeholder="輸入縣市" />
+          </div>
+          <button id="search-button">搜尋</button>
+        </div>
+
         <!-- Day Description -->
         <div class="white day-container">
           <div class="day-item">
@@ -568,7 +600,9 @@
               <i class="fa-solid fa-bullhorn"></i>
             </div>
             <div class="day-info">
-              <div class="day-title">今日天氣說明：</div>
+              <div class="day-title">
+                今日天氣說明：<span id="city-name"></span>
+              </div>
               <div id="dayDes" class="day-text"></div>
             </div>
           </div>

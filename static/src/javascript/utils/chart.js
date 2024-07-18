@@ -3,6 +3,8 @@ let lowTempObj = [];
 let highTempObj = [];
 let days = [];
 let weeks = ["日", "一", "二", "三", "四", "五", "六"];
+let rainChartInstance;
+let weekTempChartInstance;
 
 async function getWeather(location) {
   try {
@@ -10,16 +12,19 @@ async function getWeather(location) {
     const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      alert("無相關資料");
     }
     const data = await response.json();
+
+    console.log(data);
     const rainData = data[0]["12小時降雨機率"];
     const lowTemp = data[8]["最低溫度"];
-    const highTemp = data[11]["最高溫度"];
-    const lowBodyTemp = data[10]["最低體感溫度"][0].data.elementValue[0].value;
+    const highTemp = data[12]["最高溫度"];
+    const lowBodyTemp = data[11]["最低體感溫度"][0].data.elementValue[0].value;
     const highBodyTemp = data[5]["最高體感溫度"][0].data.elementValue[0].value;
+
     const dayDescript =
-      data[9]["天氣預報綜合描述"][0].data.elementValue[0].value;
+      data[10]["天氣預報綜合描述"][0].data.elementValue[0].value;
 
     // console.log(data);
 
@@ -68,7 +73,7 @@ async function getWeather(location) {
       });
       // console.log(highTempObj);
     });
-    createDescription(dayDescript);
+    createDescription(dayDescript, location);
     getRainWeatherCard(weekRain);
     getTempLines(lowTempObj, highTempObj);
     createBodyProgress(lowBodyTemp, highBodyTemp);
@@ -125,7 +130,10 @@ function getRainWeatherCard(data) {
     },
   };
 
-  new Chart(rainChart, {
+  if (rainChartInstance) {
+    rainChartInstance.destroy();
+  }
+  rainChartInstance = new Chart(rainChart, {
     type: "bar",
     data: rainData,
     options: rainOptions,
@@ -177,7 +185,10 @@ function getTempLines(lowTempObj, highTempObj) {
     },
   };
 
-  new Chart(weekTempChart, {
+  if (weekTempChartInstance) {
+    weekTempChartInstance.destroy();
+  }
+  weekTempChartInstance = new Chart(weekTempChart, {
     type: "line",
     data: weekData,
     options: weekOptions,
@@ -196,11 +207,58 @@ function createBodyProgress(lowBodyTemp, highBodyTemp) {
   minAtBar.style.width = lowBodyTemp + "%";
 }
 
-function createDescription(dayDescript) {
+function createDescription(dayDescript, location) {
+  let cityName = document.getElementById("city-name");
   let description = document.getElementById("dayDes");
+  cityName.textContent = location;
   description.textContent = dayDescript;
 }
 
 // 搜尋渲染
 const searchWord = "臺北市";
 getWeather(searchWord);
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  const selectCity = document.getElementById("city");
+  const searchBtn = document.getElementById("search-button");
+  let searchInput = document.querySelector(".search-input");
+
+  selectCity.addEventListener("change", () => {
+    let clickCity = selectCity.value;
+    searchInput.value = clickCity;
+    if (searchInput.value !== "") {
+      search(searchInput.value);
+    } else {
+      alert("請輸入縣市");
+    }
+  });
+
+  searchBtn.addEventListener("click", () => {
+    let typeInput = searchInput.value;
+    if (typeInput !== "") {
+      search(typeInput);
+    } else {
+      alert("請輸入縣市");
+    }
+  });
+
+  searchInput.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      let typeInput = searchInput.value;
+      if (typeInput !== "") {
+        search(typeInput);
+      } else {
+        alert("請輸入縣市");
+      }
+    }
+  });
+});
+
+function search(searchInput) {
+  console.log(searchInput);
+  weekRain = [];
+  lowTempObj = [];
+  highTempObj = [];
+
+  getWeather(searchInput);
+}
