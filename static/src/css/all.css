@@ -162,7 +162,12 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  z-index: 2;
+}
+@media (max-width: 576px) {
+  .button-group {
+    transform: scale(0.6);
+    transform-origin: top center;
+  }
 }
 
 .thermostat,
@@ -288,11 +293,6 @@ body {
 main {
   width: 100%;
 }
-@media (max-width: 576px) {
-  main {
-    padding: 0 0.938rem;
-  }
-}
 
 .hero {
   max-width: 1620px;
@@ -358,16 +358,6 @@ main {
 .hero-map {
   position: relative;
   flex: 1 1 auto;
-}
-@media (max-width: 768px) {
-  .hero-map {
-    height: 50vh;
-  }
-}
-@media (max-width: 576px) {
-  .hero-map {
-    height: 40vh;
-  }
 }
 
 .location-group {
@@ -473,13 +463,17 @@ main {
 .weather-forecast .nav-button.next {
   right: 0;
 }
+@media (max-width: 1200px) {
+  .weather-forecast {
+    padding: 0 1.2rem;
+  }
+}
 @media (max-width: 576px) {
   .weather-forecast .forecast-container {
-    padding: 0 30px;
+    padding: 0 24px;
   }
   .weather-forecast .forecast-item {
-    min-width: 60px;
-    padding: 0 10px;
+    padding: 0 14px;
   }
   .weather-forecast .forecast-item .weather-icon {
     font-size: 18px;
@@ -723,6 +717,30 @@ main {
 .wet-uncomfort,
 .temp-hot {
   top: 10px;
+}
+
+.information {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+@media (max-width: 576px) {
+  .information {
+    left: 0;
+  }
+}
+
+.wet-principle,
+.temp-principle {
+  display: none;
+  transition: all 0.3s ease;
+}
+@media (max-width: 576px) {
+  .wet-principle,
+  .temp-principle {
+    transform: scale(0.5) translateX(-40%);
+    transform-origin: bottom center;
+  }
 }
 
 /*# sourceMappingURL=all.css.map */

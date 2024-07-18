@@ -1,5 +1,6 @@
-async function getHeroData() {
+async function getHeroData(ctyName) {
   let response = await fetch(`/weather/threeDays/${ctyName}`);
+  console.log(`location${response}`);
   let responseData = await response.json();
   let todayWeather = responseData[0].weatherElement;
   console.log(responseData);
@@ -34,39 +35,48 @@ async function getHeroData() {
     let weatherIconSrc = "";
     let weatherIconAlt = "";
 
-    let BackgroundImageName = ""
-    function getBackgroundImage(BackgroundImageName){
+    let BackgroundImageName = "";
+    function getBackgroundImage(BackgroundImageName) {
       let weatherImage = document.querySelector(".hero-section");
-      let currentBgImage = window.getComputedStyle(weatherImage).backgroundImage;
-      let newBgImage = currentBgImage.replace(/url\([^)]*\)/, `url(/static/src/image/${BackgroundImageName}.jpg)`);
+      let currentBgImage =
+        window.getComputedStyle(weatherImage).backgroundImage;
+      let newBgImage = currentBgImage.replace(
+        /url\([^)]*\)/,
+        `url(/static/src/image/${BackgroundImageName}.jpg)`
+      );
       weatherImage.style.backgroundImage = newBgImage;
     }
 
-    if(/01/.test(wxBar)){ // 晴
+    if (/01/.test(wxBar)) {
+      // 晴
       weatherIconSrc = "/static/src/icon/01_clear.svg";
       weatherIconAlt = "Clear weather";
-      BackgroundImageName = "01_clear"
-      getBackgroundImage(BackgroundImageName)
-    }else if(/02|03/.test(wxBar)){ // 晴時多雲
+      BackgroundImageName = "01_clear";
+      getBackgroundImage(BackgroundImageName);
+    } else if (/02|03/.test(wxBar)) {
+      // 晴時多雲
       weatherIconSrc = "/static/src/icon/03_partly_cloudy_day.svg";
       weatherIconAlt = "Partly-Cloudy weather";
-      BackgroundImageName = "05_cloudy"
-      getBackgroundImage(BackgroundImageName)
-    }else if(/0[4-7]|2[4-8]/.test(wxBar)){ // 多雲、陰、霧
+      BackgroundImageName = "05_cloudy";
+      getBackgroundImage(BackgroundImageName);
+    } else if (/0[4-7]|2[4-8]/.test(wxBar)) {
+      // 多雲、陰、霧
       weatherIconSrc = "/static/src/icon/05_cloudy.svg";
       weatherIconAlt = "Cloudy weather";
-      BackgroundImageName = "05_cloudy"
-      getBackgroundImage(BackgroundImageName)
-    }else if(/0[8-9]|1[0-9]|2[0-2]|29|3[0-9]|41/.test(wxBar)){ // 雨
+      BackgroundImageName = "05_cloudy";
+      getBackgroundImage(BackgroundImageName);
+    } else if (/0[8-9]|1[0-9]|2[0-2]|29|3[0-9]|41/.test(wxBar)) {
+      // 雨
       weatherIconSrc = "/static/src/icon/rainy.svg";
       weatherIconAlt = "rainy weather";
-      BackgroundImageName = "rain"
-      getBackgroundImage(BackgroundImageName)
-    }else if(/23|42/.test(wxBar)) { // 雪
+      BackgroundImageName = "rain";
+      getBackgroundImage(BackgroundImageName);
+    } else if (/23|42/.test(wxBar)) {
+      // 雪
       weatherIconSrc = "/static/src/icon/15_snowing.svg";
       weatherIconAlt = "snowing weather";
-      BackgroundImageName = "15_snowing"
-      getBackgroundImage(BackgroundImageName)
+      BackgroundImageName = "15_snowing";
+      getBackgroundImage(BackgroundImageName);
     }
 
     let forecastItem = document.createElement("div");
