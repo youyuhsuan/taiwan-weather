@@ -1,5 +1,10 @@
-async function getHeroData(ctyName = "台北") {
+async function getHeroData(ctyName = "台北", isInitial = false) {
   try {
+    if (isInitial) {
+      locationIcon.style.fill = "white";
+      currentLocationLabel.style.display = "block";
+    }
+
     locationIcon.style.fill = "none";
     currentLocationLabel.style.display = "none";
     let response = await fetch(`/weather/threeDays/${ctyName}`);
