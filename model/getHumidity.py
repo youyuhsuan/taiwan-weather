@@ -1,8 +1,17 @@
 import urllib.request
 import urllib.parse
 import json
+from datetime import datetime
 
-def getHumidity(CWB_API_KEY):
+def getHumidity(CWB_API_KEY, humidityTimeCache):
+
+    day = datetime.now().day
+    hour = datetime.now().hour
+    
+    cacheResult = humidityTimeCache.getData(day, hour)
+    
+    if cacheResult != None:
+        return cacheResult
 
     element = "RH"
 
@@ -18,8 +27,13 @@ def getHumidity(CWB_API_KEY):
 
     for i in range(22):
         localName = my_data["records"]["locations"][0]["location"][i]["locationName"]
-        localValue = my_data["records"]["locations"][0]["location"][i]["weatherElement"][0]["time"][0]["elementValue"][0]["value"]
-        localData = {localName:localValue}
+        if hour % 6 < 3:
+            localValue = my_data["records"]["locations"][0]["location"][i]["weatherElement"][0]["time"][0]["elementValue"][0]["value"]
+        else:
+            localValue = my_data["records"]["locations"][0]["location"][i]["weatherElement"][0]["time"][1]["elementValue"][0]["value"]
+        localData = {localName: localValue}
         data.append(localData)
+    
+    humidityTimeCache.setData(day, hour, data)
 
     return data

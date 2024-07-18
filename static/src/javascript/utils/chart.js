@@ -8,15 +8,22 @@ let weekTempChartInstance;
 
 async function getWeather(location) {
   try {
-    console.log(location);
+    // console.log(location);
     const response = await fetch(`/weather/week/${location}`);
 
     if (!response.ok) {
       alert("無相關資料");
     }
     const data = await response.json();
+    weekRain = [];
+    lowTempObj = [];
+    highTempObj = [];
 
-    console.log(data);
+    const searchInputValue = document.querySelector(".search-input");
+
+    searchInputValue.value = "";
+
+    // console.log(data);
     const rainData = data[0]["12小時降雨機率"];
     const lowTemp = data[8]["最低溫度"];
     const highTemp = data[12]["最高溫度"];
@@ -214,10 +221,6 @@ function createDescription(dayDescript, location) {
   description.textContent = dayDescript;
 }
 
-// 搜尋渲染
-const searchWord = "臺北市";
-getWeather(searchWord);
-
 document.addEventListener("DOMContentLoaded", (e) => {
   const selectCity = document.getElementById("city");
   const searchBtn = document.getElementById("search-button");
@@ -228,6 +231,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     searchInput.value = clickCity;
     if (searchInput.value !== "") {
       search(searchInput.value);
+      selectCity.value = "";
     } else {
       alert("請輸入縣市");
     }
@@ -255,10 +259,45 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 function search(searchInput) {
-  console.log(searchInput);
-  weekRain = [];
-  lowTempObj = [];
-  highTempObj = [];
+  const mappingsWords = {
+    基隆: "基隆市",
+    臺北: "臺北市",
+    台北: "臺北市",
+    台北市: "臺北市",
+    新北: "新北市",
+    桃園: "桃園市",
+    臺中: "臺中市",
+    台中: "臺中市",
+    台中市: "臺中市",
+    臺南: "臺南市",
+    台南: "臺南市",
+    台南市: "臺南市",
+    高雄: "高雄市",
+    新竹: "新竹市",
+    苗栗: "苗栗縣",
+    彰化: "彰化縣",
+    南投: "南投縣",
+    雲林: "雲林縣",
+    嘉義: "嘉義市",
+    嘉義縣: "嘉義縣",
+    屏東: "屏東縣",
+    宜蘭: "宜蘭縣",
+    花蓮: "花蓮縣",
+    臺東: "臺東縣",
+    台東: "臺東縣",
+    台東縣: "臺東縣",
+    澎湖: "澎湖縣",
+    金門: "金門縣",
+    馬祖: "馬祖縣",
+  };
 
+  if (mappingsWords[searchInput]) {
+    searchInput = mappingsWords[searchInput];
+  }
   getWeather(searchInput);
+  getHeroData(searchInput);
 }
+
+// 初始搜尋渲染
+const searchWord = "新竹市";
+getWeather(searchWord);

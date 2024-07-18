@@ -2,7 +2,7 @@ const locationName = document.querySelector(".location-name");
 const locationIcon = document.querySelector(".location-icon");
 const currentLocationLabel = document.querySelector(".current-location-label");
 
-let ctyName = "臺北市";
+let ctyName = "新竹市";
 
 // 定位成功
 function success(position) {
@@ -23,10 +23,10 @@ function success(position) {
         locationIcon.style.fill = "white";
         currentLocationLabel.style.display = "block";
         animationMap(ctyName);
-        if (ctyName !== "臺北市") {
+        if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
-          getHeroData();
+          getHeroData(ctyName);
           animationMap(ctyName);
         }
       } else {
