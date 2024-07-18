@@ -25,7 +25,7 @@ const svgIdToCountyName = {
 
 let isActive = false;
 
-async function getWeatherData(type) {
+async function getTempHumidity(type) {
   try {
     let response = await fetch(`/weather/${type}`);
     let responseData = await response.json();
@@ -93,7 +93,7 @@ function getColorForWeather(value, type) {
 }
 
 async function initializeMap(type) {
-  const dataArray = await getWeatherData(type);
+  const dataArray = await getTempHumidity(type);
   weatherData = dataArray.reduce((acc, curr) => {
     const [county, value] = Object.entries(curr)[0];
     acc[county] = value;
@@ -107,7 +107,6 @@ async function initializeMap(type) {
     const areaId = path.getAttribute("data-name");
     const countyName = svgIdToCountyName[areaId];
     const value = weatherData[countyName];
-
     if (value && isActive) {
       path.style.fill = getColorForWeather(value, type);
     } else {
