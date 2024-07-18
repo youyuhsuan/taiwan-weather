@@ -20,7 +20,11 @@ function success(position) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(data, "application/xml");
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
-        locationIcon.style.fill = "white";
+        if (locationIcon) {
+          locationIcon.style.fill = "white";
+        } else {
+          console.log("d");
+        }
         currentLocationLabel.style.display = "block";
         animationMap();
         if (ctyName !== "新竹市") {
@@ -28,6 +32,7 @@ function success(position) {
           document.querySelector(".forecast-items").innerHTML = "";
           getHeroData(ctyName);
           animationMap(ctyName);
+          getWeather(ctyName);
         }
       } else {
         locationName.textContent = ctyName;
