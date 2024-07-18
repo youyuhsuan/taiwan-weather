@@ -1,4 +1,4 @@
-async function getWeatherData(location) {
+async function getLocationWeather(location) {
   try {
     let response = await fetch(`/weather/threeDays/${location}`);
     let responseData = await response.json();
@@ -12,15 +12,13 @@ function selectLocation() {
   const taiwan = document.getElementById("taiwan");
   const paths = taiwan.querySelectorAll("path");
   console.log(paths);
-
   paths.forEach((path) => {
     const areaId = path.getAttribute("data-name");
     console.log(areaId);
     const countyName = svgIdToCountyName[areaId];
     path.addEventListener("click", async () => {
       try {
-        console.log(countyName);
-        const weatherData = await getWeatherData(countyName);
+        const weatherData = await getLocationWeather(countyName);
         console.log(weatherData);
       } catch (error) {
         console.error(`Failed to get weather data for ${countyName}:`, error);
@@ -31,11 +29,11 @@ function selectLocation() {
 
 selectLocation();
 
-const heroInfo = document.querySelector(".hero-info");
-const locationName = heroInfo.querySelector(".locationName");
-const Wx = heroInfo.querySelector(".Wx");
-const AT = heroInfo.querySelector(".AT");
-const MaxAT = heroInfo.querySelector(".MaxAT");
+// const heroInfo = document.querySelector(".hero-info");
+// const locationName = heroInfo.querySelector(".locationName");
+// const Wx = heroInfo.querySelector(".Wx");
+// const AT = heroInfo.querySelector(".AT");
+// const MaxAT = heroInfo.querySelector(".MaxAT");
 
 // heroInfo.querySelector(".details");
 // <div class="details">
