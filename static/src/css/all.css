@@ -92,30 +92,30 @@ h2 {
 h3 {
   font-weight: 700;
   font-size: 2rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 h4 {
   font-weight: 500;
   font-size: 1.5rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 h5 {
   font-weight: 500;
   font-size: 1.25rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 h6 {
   font-weight: 500;
   font-size: 1.1rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .font-btn {
   font-size: 1.125rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 .font-btn.bold {
   font-weight: 700;
@@ -131,7 +131,7 @@ h6 {
 
 .font-small {
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .bold {
@@ -158,6 +158,7 @@ main {
 
 .button-group {
   position: absolute;
+  top: 0;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -312,28 +313,28 @@ main {
     flex-direction: column;
     height: auto;
     gap: 2em;
-    height: 1200px;
-  }
-}
-@media (max-width: 576px) {
-  .hero {
-    height: 100dvh;
   }
 }
 .hero-section {
   padding: 4rem;
+  height: 80dvh;
   background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(66, 151, 255, 0.25)), url("/static/src/image/01_clear.jpg"), linear-gradient(to left, rgba(255, 255, 255, 0), rgba(66, 151, 255, 0.25));
   background-position: center center, center 0rem, center center;
   background-repeat: no-repeat;
 }
+@media (max-width: 1200px) {
+  .hero-section {
+    height: 100%;
+  }
+}
 @media (max-width: 576px) {
   .hero-section {
-    padding: 2rem;
+    padding: 0.4rem;
   }
 }
 @media (max-width: 0) {
   .hero-section {
-    padding: 1rem;
+    padding: 0rem;
   }
 }
 .hero-info {
@@ -353,6 +354,7 @@ main {
 @media (max-width: 768px) {
   .hero-info {
     width: 100%;
+    padding: 0.4rem;
   }
 }
 .hero-map {
@@ -366,9 +368,16 @@ main {
   align-items: center;
   color: #ffffff;
 }
-
-.locationName {
-  margin-right: 8px;
+.location-group .location {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.location-group .location-name {
+  margin: 4px 8px 4px 0;
+}
+.location-group .current-location-label {
+  display: none;
 }
 
 .details {
@@ -503,12 +512,8 @@ main {
 
 #taiwan {
   max-height: 80vh;
-  max-width: 100%;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 #taiwan path {
   stroke: #ffffff;
@@ -516,9 +521,13 @@ main {
   transition: 0.5s;
   cursor: pointer;
 }
-#taiwan path:hover {
+#taiwan path:hover, #taiwan path.active {
   fill: rgba(255, 255, 255, 0.25);
   transform: translate(-5px, -5px);
+}
+
+.location-icon {
+  fill: none;
 }
 
 .card-section {
