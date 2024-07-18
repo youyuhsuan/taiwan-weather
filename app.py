@@ -1,11 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from model.getWeatherWeek import getWeatherWeek
 from model.getWeatherThreeDays import getWeatherThreeDays
 from model.getTemperature import getTemperature
 from model.getHumidity import getHumidity
-from model.trigger_discord import triggerDiscord
+from model.trigger_discord import triggerDiscord, DiscordData
 from model.getWeather import getWeather
 from dotenv import load_dotenv
 import os
@@ -51,12 +51,15 @@ async def get_humidity():
     return result
 
 
-@app.get("/trigger/discord")
-async def trigger_discord():
-    result = triggerDiscord()
-    return result
-
 @app.get("/weather/{location}")
 async def get_weather(location:str):
     result = getWeather(CWB_API_KEY, location)
     return result
+
+
+@app.post("/trigger/discord")
+async def trigger_discord(
+    discord_data: DiscordData = Body(...)
+):
+    result = await triggerDiscord(discord_data)
+    return None
