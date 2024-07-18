@@ -17,7 +17,7 @@
 - 點擊溫度圖示，依各地氣溫高低呈現不同色塊
 - 點擊地圖各縣市，切換至指定區域的天氣資訊
 
-![ScreenRecording2024-07-18at11 29 09PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/a244b827-e16e-4ff6-855f-c69e92830ed4)
+![ScreenRecording2024-07-19at12 31 44AM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c9ec496d-011e-4ac1-a4a4-747d7c24b89a)
 
 ---
 
