@@ -38,6 +38,30 @@ body {
   font-display: swap;
 }
 
+body {
+  font-size: 16px;
+}
+@media (max-width: 1200px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 992px) {
+  body {
+    font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 10px;
+  }
+}
+@media (max-width: 576px) {
+  body {
+    font-size: 8px;
+  }
+}
+
 * {
   font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
   font-optical-sizing: auto;
@@ -49,11 +73,21 @@ h1 {
   font-size: 6rem;
   line-height: 0;
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
 
 h2 {
   font-weight: 700;
   font-size: 3rem;
   line-height: 0;
+}
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
 }
 
 h3 {
@@ -264,6 +298,7 @@ main {
 .hero {
   max-width: 1620px;
   width: 100%;
+  height: 80dvh;
   gap: 2.5em;
   display: flex;
   margin: 0 auto;
@@ -358,42 +393,10 @@ main {
   grid-template-rows: 1fr 1fr;
   line-height: 24px;
 }
-
-.MaxAT,
-.WD,
-.MinAT,
-.PoP12h {
-  display: flex;
-  align-items: center;
-}
-.MaxAT::before,
-.WD::before,
-.MinAT::before,
-.PoP12h::before {
-  content: "";
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.MaxAT::before {
-  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
-}
-
-.WD::before {
-  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
-}
-
-.MinAT::before {
-  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
-}
-
-.PoP12h::before {
-  background-image: url("/static/src/icon/03_partly_cloudy_day.svg");
+@media (max-width: 768px) {
+  .details {
+    padding: 0em 0.4em;
+  }
 }
 
 .title_area {
