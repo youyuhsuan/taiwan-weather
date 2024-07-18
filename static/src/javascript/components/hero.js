@@ -9,13 +9,27 @@ async function getHeroData(ctyName = "台北", isInitial = false) {
     currentLocationLabel.style.display = "none";
     let response = await fetch(`/weather/threeDays/${ctyName}`);
     if (response) {
+
+      let now = new Date();
+      let currentHour = now.getHours();
+      
       let responseData = await response.json();
       let todayWeather = responseData[0].weatherElement;
-      let nowWxNum = todayWeather[1].time[0].elementValue[1].value;
+
+      let timeInterval = 0;
+      let dataTime = todayWeather[1].time[0].startTime
+      dataHour = new Date(dataTime).getHours()
+
+      if ((currentHour % 6 >= 3) && (currentHour - dataHour >= 0)){
+        timeInterval = 1
+      }
+
+      let nowWxNum = todayWeather[1].time[timeInterval].elementValue[1].value;
+      let nowWX = todayWeather[1].time[timeInterval].elementValue[0].value;
+      let nowT = todayWeather[3].time[timeInterval].elementValue[0].value;
+      let nowWD = todayWeather[9].time[timeInterval].elementValue[0].value;
+      
       let nowPoP12h = todayWeather[0].time[0].elementValue[0].value;
-      let nowWX = todayWeather[1].time[0].elementValue[0].value;
-      let nowT = todayWeather[3].time[0].elementValue[0].value;
-      let nowWD = todayWeather[9].time[0].elementValue[0].value;
 
       // 根據天氣判斷背景圖
       let BackgroundImageName = "";
@@ -29,9 +43,6 @@ async function getHeroData(ctyName = "台北", isInitial = false) {
         );
         weatherImage.style.backgroundImage = newBgImage;
       }
-
-      let now = new Date();
-      let currentHour = now.getHours();
 
       if (/01/.test(nowWxNum)) {
         // 晴
