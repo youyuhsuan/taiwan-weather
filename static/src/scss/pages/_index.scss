@@ -7,9 +7,6 @@ body {
 
 main {
   width: 100%;
-  @include breakpoint(sm) {
-    padding: 0 0.938rem;
-  }
 }
 
 .hero {
@@ -55,10 +52,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     width: 50%;
     color: $white;
-    fill: $white;
     @include breakpoint(xl) {
       width: 40%;
     }
@@ -70,13 +67,6 @@ main {
   &-map {
     position: relative;
     flex: 1 1 auto;
-    @include breakpoint(md) {
-      height: 50vh;
-    }
-
-    @include breakpoint(sm) {
-      height: 40vh;
-    }
   }
 }
 .location-group {
@@ -150,7 +140,6 @@ main {
     align-items: center;
     padding: 0 2rem;
     white-space: nowrap;
-
     &:first-child > * {
       margin-bottom: 8px;
     }
@@ -188,14 +177,17 @@ main {
     }
   }
 
+  @include breakpoint(xl) {
+    padding: 0 1.2rem;
+  }
+
   @include breakpoint(sm) {
     .forecast-container {
-      padding: 0 30px;
+      padding: 0 24px;
     }
 
     .forecast-item {
-      min-width: 60px;
-      padding: 0 10px;
+      padding: 0 14px;
 
       .weather-icon {
         font-size: 18px;
@@ -545,4 +537,23 @@ $light-gray: #e0e0e0;
 .wet-uncomfort,
 .temp-hot {
   top: 10px;
+}
+
+.information {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  @include breakpoint(sm) {
+    left: 0;
+  }
+}
+
+.wet-principle,
+.temp-principle {
+  display: none;
+  transition: all 0.3s ease;
+  @include breakpoint(sm) {
+    transform: scale(0.5) translateX(-40%);
+    transform-origin: bottom center;
+  }
 }

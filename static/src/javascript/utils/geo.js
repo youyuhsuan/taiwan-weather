@@ -2,14 +2,6 @@ const locationName = document.querySelector(".locationName");
 
 let ctyName = "臺北市";
 
-// function setCtyName(city) {
-//   city = value;
-// }
-
-// function getCtyName() {
-//   return city;
-// }
-
 // 定位成功
 function success(position) {
   const latitude = position.coords.latitude;
