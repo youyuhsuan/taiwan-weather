@@ -22,7 +22,7 @@ function success(position) {
         ctyName = doc.getElementsByTagName("ctyName")[0].textContent;
         locationIcon.style.fill = "white";
         currentLocationLabel.style.display = "block";
-        animationMap(ctyName);
+        animationMap();
         if (ctyName !== "新竹市") {
           locationName.textContent = ctyName;
           document.querySelector(".forecast-items").innerHTML = "";
