@@ -27,8 +27,11 @@ def getHumidity(CWB_API_KEY, humidityTimeCache):
 
     for i in range(22):
         localName = my_data["records"]["locations"][0]["location"][i]["locationName"]
-        localValue = my_data["records"]["locations"][0]["location"][i]["weatherElement"][0]["time"][0]["elementValue"][0]["value"]
-        localData = {localName:localValue}
+        if hour % 6 < 3:
+            localValue = my_data["records"]["locations"][0]["location"][i]["weatherElement"][0]["time"][0]["elementValue"][0]["value"]
+        else:
+            localValue = my_data["records"]["locations"][0]["location"][i]["weatherElement"][0]["time"][1]["elementValue"][0]["value"]
+        localData = {localName: localValue}
         data.append(localData)
     
     humidityTimeCache.setData(day, hour, data)
