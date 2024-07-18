@@ -64,4 +64,4 @@ async def trigger_discord(
     discord_data: DiscordData = Body(...)
 ):
     result = await triggerDiscord(discord_data)
-    return None
+    return result
