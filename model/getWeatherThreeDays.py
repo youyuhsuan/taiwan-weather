@@ -2,7 +2,13 @@ import urllib.request
 import urllib.parse
 import json
 
-def getWeatherThreeDays(CWB_API_KEY, location):
+def getWeatherThreeDays(CWB_API_KEY, location,threeDaysLocationCache):
+
+    cacheResult = threeDaysLocationCache.getData(location)
+
+    if cacheResult != None:
+        return cacheResult
+
     try:
         api_url = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-089"
 
@@ -20,6 +26,8 @@ def getWeatherThreeDays(CWB_API_KEY, location):
                 data = response.read().decode("utf-8")
                 weather_data = json.loads(data)
                 locationResult = weather_data["records"]["locations"][0]["location"]
+
+                threeDaysLocationCache.setData(location,locationResult)
 
                 return locationResult
             else:

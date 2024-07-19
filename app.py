@@ -17,6 +17,7 @@ app = FastAPI()
 temperatureTimeCache = TimeCache()
 humidityTimeCache = TimeCache()
 weekLocationCache = LocationCache()
+threeDaysLocationCache = LocationCache()
 
 app.mount("/static", StaticFiles(directory="static", html=True))
 
@@ -37,7 +38,7 @@ async def get_weather_week(location: str):
 
 @app.get("/weather/threeDays/{location}")
 async def get_weather_threeDays(location: str):
-    result = getWeatherThreeDays(CWB_API_KEY, location)
+    result = getWeatherThreeDays(CWB_API_KEY, location,threeDaysLocationCache)
     return result
 
 
