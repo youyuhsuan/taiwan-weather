@@ -1,9 +1,15 @@
+from datetime import datetime
 # data -> [ {"location":台北市, "data":資料}, ... ]
 class LocationCache():
     def __init__(self):
         self.data = []
         self.max = 20
+        self.dataTime = datetime.now()
     def getData(self,location):
+        queryTime = self.dataTime.now()
+        difference = queryTime - self.dataTime
+        if (difference.seconds >= 3600 * 3):
+            return None
         for i in range(len(self.data)-1,-1,-1):
             if self.data[i]["location"] == location:
                 found_data = self.data[i]
