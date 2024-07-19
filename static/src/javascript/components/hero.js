@@ -74,6 +74,10 @@ async function getHeroData(ctyName = "台北", isInitial = false) {
       document.querySelector(".WD span").textContent = nowWD;
       let tempArr = todayWeather[3].time;
       let wxArr = todayWeather[1].time;
+      if (timeInterval == 1){
+        tempArr.shift()
+        wxArr.shift()
+      }
 
       document.querySelector(".forecast-items").innerHTML = "";
       let forecastContainer = document.querySelector(".forecast-container");
