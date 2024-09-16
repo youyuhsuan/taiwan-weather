@@ -1,0 +1,43 @@
+@use "sass:math";
+
+// Color Scheme
+// Primary
+$primary-60: #6ca2e4;
+$primary-50: #97c4ff;
+$primary-20: hsla(214, 100, 88, 0.25);
+
+$primary-opacity-25: rgba(66, 151, 255, 0.25);
+$primary-opacity-10: rgba(66, 151, 255, 0.1);
+
+// Secondary
+$secondary-70: #666666;
+$secondary-50: #757575;
+$secondary-20: #e8e8e8;
+$secondary-10: #f8f8f8;
+
+// Additional
+$black: #000000;
+$white-opacity-25: rgba(255, 255, 255, 0.25);
+$black-opacity-60: rgba(0, 0, 0, 0.6);
+$white: #ffffff;
+
+$gradient: linear-gradient(
+  to left,
+  rgba(255, 255, 255, 0),
+  $primary-opacity-25
+);
+
+//  Padding
+$padding: 0.625rem; //  10px
+
+$grid-breakpoints: (
+  xxs: 320px,
+  xs: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$border-sm-radius: 5px;

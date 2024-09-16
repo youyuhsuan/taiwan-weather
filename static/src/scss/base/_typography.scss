@@ -1,0 +1,224 @@
+@use "../abstracts/mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap");
+@font-face {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2)
+    format("woff2");
+  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0,
+    U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4,
+    U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b,
+    U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014,
+    U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d,
+    U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168,
+    U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730,
+    U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3,
+    U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f,
+    U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb,
+    U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd,
+    U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c,
+    U+ff1a;
+}
+
+@font-face {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2)
+    format("woff2");
+  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0,
+    U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4,
+    U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b,
+    U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014,
+    U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d,
+    U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168,
+    U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730,
+    U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3,
+    U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f,
+    U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb,
+    U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd,
+    U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c,
+    U+ff1a;
+}
+@font-face {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v35/-nF7OG829Oofr2wohFbTp9iFOisNA_cTyNromxqQuEMQ2wHYwbnmy1R1jDujLebozBXCo2qYhRo.119.woff2)
+    format("woff2");
+  unicode-range: U+20-22, U+27-2a, U+2c-3b, U+3f, U+41-5d, U+61-7b, U+7d, U+a0,
+    U+ab, U+ae, U+b2-b3, U+b7, U+bb, U+bf, U+c9, U+cd, U+d6, U+e0-ef, U+f1-f4,
+    U+f6, U+f9-fa, U+fc-fd, U+101, U+103, U+110-111, U+113, U+12b, U+14d, U+16b,
+    U+1a1, U+1b0, U+1ce, U+300-301, U+1ea1, U+1ea3, U+1ebf, U+1ec7, U+2013-2014,
+    U+2039-203a, U+203c, U+2122, U+3001-3002, U+4e00, U+4e0a-4e0b, U+4e0d,
+    U+4e2d, U+4eba, U+4ee5, U+4f5c, U+4f86, U+500b, U+5011, U+5165, U+5168,
+    U+516c, U+51fa, U+5206, U+5230, U+52d5, U+53ef-53f0, U+570b, U+5728, U+5730,
+    U+591a, U+5927, U+5929, U+597d, U+5b50, U+5bb6, U+5c0f, U+5e73-5e74, U+5fc3,
+    U+6210-6211, U+6240, U+6587, U+65b0, U+65b9, U+65bc, U+65e5, U+660e, U+662f,
+    U+6642, U+66f4, U+6700, U+6703, U+6708-6709, U+672c, U+6b63, U+6cbb,
+    U+70b9-70ba, U+751f, U+7528, U+767c, U+7684, U+76f8, U+7db2, U+7f8e, U+80fd,
+    U+81ea, U+884c, U+8981, U+958b, U+95dc, U+96fb, U+9801, U+9996, U+ff0c,
+    U+ff1a;
+}
+
+$font-family: "Noto Sans TC", "Segoe UI", Frutiger, "Frutiger Linotype",
+  "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+
+$font-size-base: 1rem;
+$line-height-base: 1rem;
+
+// font-weight
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+//  line-height
+$line-height-slogan-dialog: $line-height-base; // 24px
+$line-height-headline: $line-height-base * 1.125; // 34px
+$line-height-body: $line-height-base * 0.831; // 13px
+
+//  font-size
+$h1-font-size: $font-size-base * 1.9; // 28px
+$h2-font-size: 2.6rem; // 30px
+$h3-font-size: $font-size-base * 1.2; // 24px
+$btn-font-size: $font-size-base * 1.188; // 19px
+$content-font-size: $font-size-base;
+$category-list-font-size: $font-size-base * 0.875; // 14px
+
+* {
+  font-family: $font-family;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+// Base values
+$font-size-base: 1rem; // 保持不變，通常等於 16px
+$line-height-base: 1.5; // 調整為更常見的值
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-tight: 1.2;
+$line-height-normal: 1;
+$line-height-relaxed: 1.8;
+
+// Font sizes
+$h1-font-size: $font-size-base * 6; // 96px
+$h2-font-size: $font-size-base * 3; // 48px
+$h3-font-size: $font-size-base * 2; // 32px
+$h4-font-size: $font-size-base * 1.5; // 24px
+$h5-font-size: $font-size-base * 1.25; // 20px
+$h6-font-size: $font-size-base * 1.1; // 17.6px
+
+$btn-font-size: $font-size-base * 1.125; // 18px
+$content-font-size: $font-size-base; // 16px
+$small-font-size: $font-size-base * 0.875; // 14px
+
+body {
+  font-size: 16px;
+
+  @include breakpoint(xl) {
+    font-size: 14px;
+  }
+
+  @include breakpoint(lg) {
+    font-size: 12px;
+  }
+
+  @include breakpoint(md) {
+    font-size: 10px;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 8px;
+  }
+}
+
+* {
+  font-family: $font-family;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
+// Element Styles
+h1 {
+  font-weight: $font-weight-bold;
+  font-size: $h1-font-size;
+  line-height: 0;
+  @include breakpoint(md) {
+    font-size: 4rem;
+  }
+}
+
+h2 {
+  font-weight: $font-weight-bold;
+  font-size: $h2-font-size;
+  line-height: 0;
+  @include breakpoint(md) {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-weight: $font-weight-bold;
+  font-size: $h3-font-size;
+  line-height: $line-height-normal;
+}
+
+h4 {
+  font-weight: $font-weight-medium;
+  font-size: $h4-font-size;
+  line-height: $line-height-normal;
+}
+
+h5 {
+  font-weight: $font-weight-medium;
+  font-size: $h5-font-size;
+  line-height: $line-height-normal;
+}
+
+h6 {
+  font-weight: $font-weight-medium;
+  font-size: $h6-font-size;
+  line-height: $line-height-normal;
+}
+
+// Composite Styles
+.font-btn {
+  font-size: $btn-font-size;
+  line-height: $line-height-normal;
+  &.bold {
+    font-weight: $font-weight-bold;
+  }
+  &.regular {
+    font-weight: $font-weight-regular;
+  }
+}
+
+.font-content {
+  font-size: $content-font-size;
+  line-height: $line-height-relaxed;
+}
+
+.font-small {
+  font-size: $small-font-size;
+  line-height: $line-height-normal;
+}
+
+// Utility Classes
+.bold {
+  font-weight: $font-weight-bold;
+}
+.medium {
+  font-weight: $font-weight-medium;
+}
+.regular {
+  font-weight: $font-weight-regular;
+}
