@@ -553,7 +553,7 @@ main {
 }
 @media (max-width: 1200px) {
   .card-section {
-    padding: 0 20px;
+    padding: 0 48px;
   }
 }
 
@@ -581,7 +581,7 @@ main {
 }
 
 .des {
-  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  background-image: linear-gradient(to top, #6ca2e4 0%, #97c4ff 100%);
 }
 
 .day-text {
@@ -651,7 +651,7 @@ main {
 }
 
 .low {
-  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  background-image: linear-gradient(to top, #6ca2e4 0%, #6f86d6 100%);
 }
 
 .uv-info {

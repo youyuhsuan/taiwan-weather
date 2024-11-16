@@ -181,13 +181,13 @@ select {
   margin-left: 10px;
   font-size: 20px;
   border-radius: 0 10px 10px 0;
-  background-color: #eeeeee;
+  background-color: #f8f8f8;
   transition: 0.2s linear;
   color: #000000;
 }
 
 #search-button:hover {
-  background-color: #2197c7;
+  background-color: #6ca2e4;
   color: #ffffff;
 }
 

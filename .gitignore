@@ -140,4 +140,5 @@ cython_debug/
 # macOS
 .DS_Store
 
-__pycache__
+__pycache__/
+

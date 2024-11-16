@@ -38,13 +38,13 @@ async def get_weather_week(location: str):
 
 @app.get("/weather/threeDays/{location}")
 async def get_weather_threeDays(location: str):
-    result = getWeatherThreeDays(CWB_API_KEY, location,threeDaysLocationCache)
+    result = getWeatherThreeDays(CWB_API_KEY, location, threeDaysLocationCache)
     return result
 
 
 @app.get("/weather/temperature")
 async def get_temperature():
-    result = getTemperature(CWB_API_KEY,temperatureTimeCache)
+    result = getTemperature(CWB_API_KEY, temperatureTimeCache)
     return result
 
 
@@ -55,14 +55,12 @@ async def get_humidity():
 
 
 @app.get("/weather/{location}")
-async def get_weather(location:str):
+async def get_weather(location: str):
     result = getWeather(CWB_API_KEY, location)
     return result
 
 
 @app.post("/trigger/discord")
-async def trigger_discord(
-    discord_data: DiscordData = Body(...)
-):
+async def trigger_discord(discord_data: DiscordData = Body(...)):
     result = await triggerDiscord(discord_data)
     return result
