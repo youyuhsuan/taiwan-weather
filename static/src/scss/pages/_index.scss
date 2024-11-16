@@ -283,7 +283,7 @@ $light-gray: #e0e0e0;
   color: $secondary-70;
   margin: 40px auto 60px;
   @include breakpoint(xl) {
-    padding: 0 20px;
+    padding: 0 48px;
   }
 }
 
@@ -309,7 +309,7 @@ $light-gray: #e0e0e0;
 }
 
 .des {
-  @include gradient-background(#48c6ef, #6f86d6);
+  @include gradient-background($primary-60, $primary-50);
 }
 
 .day-text {
@@ -383,7 +383,7 @@ $light-gray: #e0e0e0;
 }
 
 .low {
-  @include gradient-background(#48c6ef, #6f86d6);
+  @include gradient-background($primary-60, #6f86d6);
 }
 
 .uv-info {
